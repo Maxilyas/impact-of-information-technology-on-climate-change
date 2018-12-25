@@ -17,6 +17,20 @@
           width: 80%;
           padding: 10px;
       }
+      #sections {
+          position: relative;
+          display: inline-block;
+          width: 250px;
+          top: 0px;
+          z-index: 90;
+      }
+
+      .step {
+          margin-bottom: 200px;
+      }
+
+      /* viz 1 style */
+
       /* Style the lines by removing the fill and applying a stroke */
       .line {
           fill: none;
@@ -39,6 +53,21 @@
           fill: none;
           stroke: steelblue;
       }
+
+      /***********************************/
+      /* viz x style */
+      #vis {
+          display: inline-block;
+          position: fixed;
+          top: 60px;
+          z-index: 1;
+          margin-left: 0;
+
+          height: 600px;
+          width: 600px;
+          background-color: #ddd;
+      }
+
     </style>
   </head>
 
@@ -117,9 +146,23 @@
     .on("mouseout", function() {  })
     </script>
 
-    Proin eget augue vel lectus pulvinar finibus sit amet et mi. Sed tempus sollicitudin maximus. Vestibulum lacinia interdum enim, at vehicula justo mollis vitae. Phasellus dignissim pharetra ornare. Aliquam pulvinar, odio id consectetur mattis, metus ligula facilisis justo, eget vehicula felis neque vel purus. Etiam vitae nisl libero. Vestibulum accumsan et lorem vitae faucibus. Fusce venenatis ante ipsum, id eleifend nisl pellentesque nec. Nullam lacinia, metus vel dignissim vehicula, mi lectus dignissim dolor, in sodales sem felis sit amet velit. Suspendisse nunc augue, volutpat id vulputate eu, pellentesque a dui.
+    <div id='graphic'>
+      <div id='sections'>
+        <section class="step">
+          <div class="title">OpenVis Conf 2013</div>
+          I did what no presenter should ever do: I watched my own talk...
+        </section>
+        <section class="step">
+          Proin eget augue vel lectus pulvinar finibus sit amet et mi. Sed tempus sollicitudin maximus. Vestibulum lacinia interdum enim, at vehicula justo mollis vitae. Phasellus dignissim pharetra ornare. Aliquam pulvinar, odio id consectetur mattis, metus ligula facilisis justo, eget vehicula felis neque vel purus. Etiam vitae nisl libero. Vestibulum accumsan et lorem vitae faucibus. Fusce venenatis ante ipsum, id eleifend nisl pellentesque nec. Nullam lacinia, metus vel dignissim vehicula, mi lectus dignissim dolor, in sodales sem felis sit amet velit. Suspendisse nunc augue, volutpat id vulputate eu, pellentesque a dui.
+        </section>
+        <section class="step">
+          Vestibulum et dui ac lectus tincidunt fringilla eu interdum arcu. Quisque sed odio vel felis eleifend scelerisque. Nunc tincidunt orci at eros efficitur ullamcorper. Nulla facilisi. Donec sodales quam vel justo cursus aliquet. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut elementum purus. Sed et auctor odio, eu ullamcorper tortor.
+        </section>
+      </div>
+      <div id='vis'>
+      </div>
+    </div>
 
-    Vestibulum et dui ac lectus tincidunt fringilla eu interdum arcu. Quisque sed odio vel felis eleifend scelerisque. Nunc tincidunt orci at eros efficitur ullamcorper. Nulla facilisi. Donec sodales quam vel justo cursus aliquet. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut elementum purus. Sed et auctor odio, eu ullamcorper tortor.
 
     Quisque gravida orci in tempus posuere. In eleifend eros leo, eu gravida lacus hendrerit et. Vivamus volutpat, lacus id molestie ullamcorper, mi magna ornare sem, sed consequat sapien mi non tortor. Proin et euismod metus. In efficitur nulla vitae sapien mollis semper. Donec nunc eros, lacinia eget condimentum vel, pretium vitae tellus. Suspendisse dictum, nunc ac rhoncus dictum, sem quam condimentum libero, vel fermentum sapien sapien non nibh. Maecenas a sem vestibulum mi aliquam suscipit. Mauris ut velit ornare, facilisis lectus ac, dictum magna. Cras a sapien neque. Proin non dui turpis. Sed id lectus ut felis convallis faucibus. Nam vestibulum est quis ullamcorper fermentum.
 
