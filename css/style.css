@@ -1,0 +1,57 @@
+/* General style */
+body { background-color:#e0ecf4 }
+.center {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+#sections {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    top: 0px;
+    z-index: 90;
+}
+
+.step {
+    margin-bottom: 200px;
+}
+
+/* viz 1 style */
+
+/* Style the lines by removing the fill and applying a stroke */
+.line {
+    fill: none;
+    stroke: #ffab00;
+    stroke-width: 3;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+/* Style the dots by assigning a fill and stroke */
+.dot {
+    fill: #ffab00;
+    stroke: #fff;
+}
+
+.focus circle {
+    fill: none;
+    stroke: steelblue;
+}
+
+/***********************************/
+/* viz x style */
+#vis {
+    display: inline-block;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    margin-left: 0;
+
+    height: 100%;
+    width: 50%;
+    background-color: #e0dcff;
+}
