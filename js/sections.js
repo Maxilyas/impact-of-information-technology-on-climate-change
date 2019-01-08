@@ -284,6 +284,8 @@ var scrollVis = function() {
     activateFunctions[6] = showHistAll;
     activateFunctions[7] = showCough;
     activateFunctions[8] = showHistAll;
+    activateFunctions[9] = showFlow;
+    activateFunctions[10] = showPieChart;
 
     // updateFunctions are called while
     // in a particular section to update
@@ -291,7 +293,7 @@ var scrollVis = function() {
     // Most sections do not need to be updated
     // for all scrolling and so are set to
     // no-op functions.
-    for(var i = 0; i < 9; i++) {
+    for(var i = 0; i < 11; i++) {
       updateFunctions[i] = function() {};
     }
     updateFunctions[7] = updateCough;
@@ -771,6 +773,18 @@ function display(data) {
     plot.update(index, progress);
   });
 }
+function showFlow(){
+ flow("#vis")
+}
 
+
+function showPieChart(){
+    d3.selectAll(".hist")
+      .transition()
+      .duration(0)
+      .style("opacity", 0);
+
+    Plot();
+}
 // load data and display
 d3.tsv("data/words.tsv", display);
