@@ -596,6 +596,15 @@ var scrollVis = function() {
       .style("opacity",0);
   }
 
+    function showFlow()
+  {
+       console.log(5 + 6);
+      $( ".osef" ).remove();
+
+//      $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: -300px;"><div class="innerCont"/></div></div>')
+      flow("#vis");
+  }
+
   /**
    * UPDATE FUNCTIONS
    *
@@ -785,6 +794,9 @@ function showPieChart(){
       .transition()
       .duration(0)
       .style("opacity", 0);
+
+      d3.selectAll("flow")
+        .remove();
 
     d3.select(".x.axis")
       .transition().duration(500)
