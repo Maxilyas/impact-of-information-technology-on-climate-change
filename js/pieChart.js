@@ -1,12 +1,12 @@
-
+	
     var salesData;
-    var chartInnerDiv = '<div class="innerCont" style="overflow: auto;top:0px; left: 0px; height:91% ; Width:100% ;position: relative;overflow: hidden;"/>';
+    var chartInnerDiv = '<div class="innerCont";"/>';
     var truncLengh = 30;
 
-
+	
     function Plot() {
         TransformChartData(chartData, chartOptions, 0);
-        BuildPie("vis", chartData, chartOptions, 0)
+        BuildPie("chart", chartData, chartOptions, 0)
     }
 
     function BuildPie(id, chartData, options, level) {
@@ -19,8 +19,8 @@
         chart = d3.select("#" + id + " .innerCont");
 
         var yVarName = options[0].yaxis;
-        width = $(chart[0]).outerWidth(),
-        height = $(chart[0]).outerHeight(),
+        width = 600,
+        height = 400,
         radius = Math.min(width, height) / divisionRatio;
 
         if (level == 1) {

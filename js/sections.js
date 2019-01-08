@@ -8,9 +8,9 @@
 var scrollVis = function() {
   // constants to define the size
   // and margins of the vis area.
-  var width = 500;
-  var height = 450;
-  var margin = {top:20, left:20, bottom:40, right:5};
+  var width = 600;
+  var height = 520;
+  var margin = {top:0, left:20, bottom:40, right:10};
 
   // Keep track of which visualization
   // we are on and which was the last
@@ -131,8 +131,6 @@ var scrollVis = function() {
       setupVis(wordData, fillerCounts, histData);
 
       setupSections();
-
-      flow(this);
 
     });
   };
@@ -284,8 +282,7 @@ var scrollVis = function() {
     activateFunctions[6] = showHistAll;
     activateFunctions[7] = showCough;
     activateFunctions[8] = showHistAll;
-    activateFunctions[9] = showFlow;
-    activateFunctions[10] = showPieChart;
+    activateFunctions[9] = showPieChart;
 
     // updateFunctions are called while
     // in a particular section to update
@@ -293,7 +290,7 @@ var scrollVis = function() {
     // Most sections do not need to be updated
     // for all scrolling and so are set to
     // no-op functions.
-    for(var i = 0; i < 11; i++) {
+    for(var i = 0; i < 10; i++) {
       updateFunctions[i] = function() {};
     }
     updateFunctions[7] = updateCough;
@@ -522,6 +519,14 @@ var scrollVis = function() {
    *
    */
   function showHistAll() {
+  
+	
+     $( ".osef" ).remove();
+
+	d3.selectAll(".openvis-title")
+      .transition()
+      .duration(0)
+      .attr("opacity", 0.0);
     // ensure the axis to histogram one
     showAxis(xAxisHist);
 
@@ -745,6 +750,7 @@ var scrollVis = function() {
  * @param data - loaded tsv data
  */
 function display(data) {
+
   // create a new plot and
   // display it
   var plot = scrollVis();
@@ -773,10 +779,6 @@ function display(data) {
     plot.update(index, progress);
   });
 }
-function showFlow(){
- flow("#vis")
-}
-
 
 function showPieChart(){
     d3.selectAll(".hist")
@@ -784,7 +786,13 @@ function showPieChart(){
       .duration(0)
       .style("opacity", 0);
 
+    d3.select(".x.axis")
+      .transition().duration(500)
+      .style("opacity",0);
+	
+    $('#vis').append('<div id="chart" class="osef"><div class="innerCont"/></div></div>')  
     Plot();
 }
 // load data and display
 d3.tsv("data/words.tsv", display);
+
