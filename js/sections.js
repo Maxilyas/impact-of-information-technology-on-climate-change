@@ -8,9 +8,9 @@
 var scrollVis = function() {
   // constants to define the size
   // and margins of the vis area.
-  var width = 600;
-  var height = 520;
-  var margin = {top:0, left:20, bottom:40, right:10};
+  var width = 500;
+  var height = 450;
+  var margin = {top:20, left:20, bottom:40, right:5};
 
   // Keep track of which visualization
   // we are on and which was the last
