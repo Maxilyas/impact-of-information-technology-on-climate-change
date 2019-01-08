@@ -1,9 +1,9 @@
-	
+
     var salesData;
     var chartInnerDiv = '<div class="innerCont";"/>';
     var truncLengh = 30;
 
-	
+
     function Plot() {
         TransformChartData(chartData, chartOptions, 0);
         BuildPie("chart", chartData, chartOptions, 0)
@@ -304,17 +304,15 @@
             "Consumption": "Smartphone production",
             "Model": "Smartphone",
             "Total": 12
-        }, 
+        },
      		{
             "Consumption": "TV Production",
             "Model": "TV",
             "Total": 11
-        }, 
+        },
         {
             "Consumption": "Other production",
             "Model": "Other",
             "Total": 5
         }
     ];
-	  
-

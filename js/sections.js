@@ -283,7 +283,7 @@ var scrollVis = function() {
     activateFunctions[7] = showCough;
     activateFunctions[8] = showHistAll;
     activateFunctions[9] = showPieChart;
-
+    activateFunctions[10] = showFlow;
     // updateFunctions are called while
     // in a particular section to update
     // the scroll progress in that section.
@@ -519,8 +519,8 @@ var scrollVis = function() {
    *
    */
   function showHistAll() {
-  
-	
+
+
      $( ".osef" ).remove();
 
 	d3.selectAll(".openvis-title")
@@ -594,6 +594,11 @@ var scrollVis = function() {
     g.select(".x.axis")
       .transition().duration(500)
       .style("opacity",0);
+  }
+
+  function showFlow()
+  {
+
   }
 
   /**
@@ -789,10 +794,9 @@ function showPieChart(){
     d3.select(".x.axis")
       .transition().duration(500)
       .style("opacity",0);
-	
-    $('#vis').append('<div id="chart" class="osef"><div class="innerCont"/></div></div>')  
+
+    $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: -300px;"><div class="innerCont"/></div></div>')
     Plot();
 }
 // load data and display
 d3.tsv("data/words.tsv", display);
-
