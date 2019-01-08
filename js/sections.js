@@ -283,14 +283,15 @@ var scrollVis = function() {
     activateFunctions[7] = showCough;
     activateFunctions[8] = showHistAll;
     activateFunctions[9] = showPieChart;
-      activateFunctions[10] = showLineChart;
+    activateFunctions[10] = showLineChart;
+    activateFunctions[11] = showFlow;
     // updateFunctions are called while
     // in a particular section to update
     // the scroll progress in that section.
     // Most sections do not need to be updated
     // for all scrolling and so are set to
     // no-op functions.
-    for(var i = 0; i < 11; i++) {
+    for(var i = 0; i < 12; i++) {
       updateFunctions[i] = function() {};
     }
     updateFunctions[7] = updateCough;
@@ -519,8 +520,8 @@ var scrollVis = function() {
    *
    */
   function showHistAll() {
-  
-	
+
+
      $( ".osef" ).remove();
 
 	d3.selectAll(".openvis-title")
@@ -596,14 +597,18 @@ var scrollVis = function() {
       .style("opacity",0);
   }
 
-    function showFlow()
+  function showFlow()
   {
-       console.log(5 + 6);
       $( ".osef" ).remove();
 
-//      $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: -300px;"><div class="innerCont"/></div></div>')
       flow("#vis");
   }
+
+  function showLineChart()
+  {
+      makeChart();
+  }
+
 
   /**
    * UPDATE FUNCTIONS
@@ -801,15 +806,9 @@ function showPieChart(){
     d3.select(".x.axis")
       .transition().duration(500)
       .style("opacity",0);
-	
-    $('#vis').append('<div id="chart" class="osef"><div class="innerCont"/></div></div>')  
+
+    $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: -300px;"><div class="innerCont"/></div></div>')
     Plot();
 }
-
-function showLineChart(){
-    makeChart()
-}
-
 // load data and display
 d3.tsv("data/words.tsv", display);
-
