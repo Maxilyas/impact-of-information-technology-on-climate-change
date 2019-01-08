@@ -34,7 +34,7 @@ function makeChart()
     $("#viz").append(svg);
     
     // Get the data
-    d3.csv("../data/data.csv", function(error, data) {
+    d3.csv("/data/data.csv", function(error, data) {
 	data.forEach(function(d) {
 	    d.date = parseDate(d.date);
 	    d.close = +d.close;
