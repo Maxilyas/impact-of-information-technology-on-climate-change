@@ -171,14 +171,14 @@ var scrollVis = function() {
           .attr("y", (height / 6) + (height / 10) )
           .text("Les references");
 
-      
+
     g.selectAll(".openvis-title")
       .attr("opacity", 0);
 
     g.selectAll(".ref")
           .attr("opacity", 0);
-		  
-	
+
+
     // count filler word count title
     g.append("text")
       .attr("class", "title count-title highlight")
@@ -289,8 +289,12 @@ var scrollVis = function() {
         activateFunctions[3] = showUpdateChartCat1;
         activateFunctions[4] = showUpdateChartCat2;
 		activateFunctions[5] = showUpdateChartCat3;
-        activateFunctions[6] = showFlow;
-        activateFunctions[7] = showRef;;
+        activateFunctions[6] = showFlowP1;
+        activateFunctions[7] = showFlowP2;
+        activateFunctions[8] = showFlowP3;
+        activateFunctions[9] = showFlowP4;
+        activateFunctions[10] = showFlowP5;
+        activateFunctions[11] = showRef;
 
         // updateFunctions are called while
         // in a particular section to update
@@ -298,7 +302,7 @@ var scrollVis = function() {
         // Most sections do not need to be updated
         // for all scrolling and so are set to
         // no-op functions.
-        for(var i = 0; i < 8; i++) {
+        for(var i = 0; i < 12; i++) {
             updateFunctions[i] = function() {};
         }
     };
@@ -343,7 +347,7 @@ var scrollVis = function() {
         d3.selectAll("flow")
             .remove();
     }
-    
+
     function showRef() {
         removeFlow();
         g.selectAll(".ref")
@@ -376,12 +380,37 @@ var scrollVis = function() {
             .attr("opacity", 1.0);
     }
 
-    function showFlow()
-        {
-            g.selectAll(".ref")
-                .attr("opacity", 0);
+    function showFlowP1()
+    {
+        g.selectAll(".ref")
+            .attr("opacity", 0);
         removePieChart();
-        flow("#vis");
+        removeFlow();
+        flow_p1("#vis");
+    }
+
+    function showFlowP2()
+    {
+        removeFlow();
+        flow_p2("#vis");
+    }
+
+    function showFlowP3()
+    {
+        removeFlow();
+        flow_p3("#vis");
+    }
+
+    function showFlowP4()
+    {
+        removeFlow();
+        flow_p4("#vis");
+    }
+
+    function showFlowP5()
+    {
+        removeFlow();
+        flow_p5("#vis");
     }
 
     function showLineChart()
@@ -394,7 +423,7 @@ var scrollVis = function() {
         $('svg').css('margin-top', '12%');
 
         makeChart(svg, 19);
-            
+
     }
 
 	function removeLineChart()

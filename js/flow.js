@@ -1,11 +1,27 @@
-function flow(scroll)
+
+function flow_p1(scroll)
 {
     //Make an SVG Container
     var svgContainer = d3.select(scroll).append("flow")
                                         .append("svg")
-                                      .attr("width", 600)
-                                      .attr("height", 1000);
+                                      .attr("width", 1)
+                                      .attr("height", 1);
 
+    var y = $(window).width()/2;
+    var x =100;
+    svgContainer.attr('transform',`translate(`+x+`,-`+y+`) rotate(-90)`);
+
+
+    svgContainer.attr("width", "100%")
+                .attr("height", "100%")
+                .attr("cx", 200)
+                .attr("cy", 200);
+
+
+/*    d3.selectAll("#vis" + " .innerCont").remove();
+    $("#vis").append(chartInnerDiv);
+    chart = d3.select("#vis" + " .innerCont");
+*/
 /*    //Draw the line
     var circle = svgContainer.append("line")
                            .attr("x1", 5)
@@ -18,32 +34,10 @@ function flow(scroll)
    const data = {
        nodes: [
            { id: "A1" },
-           { id: "A2" },
-           { id: "A3" },
-           { id: "B1" },
-           { id: "B2" },
-           { id: "B3" },
-           { id: "B4" },
-           { id: "C1" },
-           { id: "C2" },
-           { id: "C3" },
-           { id: "D1" },
-           { id: "D2" }
+           { id: "B1" }
        ],
        links: [
-           { source: "A1", target: "B1", value: 27 },
-           { source: "A1", target: "B2", value:  9 },
-           { source: "A2", target: "B2", value:  5 },
-           { source: "A2", target: "B3", value: 11 },
-           { source: "A3", target: "B2", value: 12 },
-           { source: "A3", target: "B4", value:  7 },
-           { source: "B1", target: "C1", value: 13 },
-           { source: "B1", target: "C2", value: 10 },
-           { source: "B4", target: "C2", value:  5 },
-           { source: "B4", target: "C3", value:  2 },
-           { source: "B1", target: "D1", value:  4 },
-           { source: "C3", target: "D1", value:  1 },
-           { source: "C3", target: "D2", value:  1 }
+           { source: "A1", target: "B1", value: 0.416 },
        ]
    }
 
@@ -83,14 +77,23 @@ function flow(scroll)
                .attr("height", d => d.y1 - d.y0)
                .attr("fill", "blue")
                .attr("opacity", 0.8);
+}
 
-    svgContainer.attr('transform',`rotate(-90, 0,-500)`);
-    //$(svgContainer).css({top: -2000, position:'absolute'});
-   /*svgContainer.attr('transform',function(){
-       var me = svgContainer.node()
-       var x1 = me.getBBox().x + me.getBBox().width/2;//the center x about which you want to rotate
-       var y1 = me.getBBox().y + me.getBBox().height/2;//the center y about which you want to rotate
 
-       return `rotate(-90, ${x1}, ${y1})`;//rotate 180 degrees about x and y
-   });*/
+
+function flow_p2(scroll)
+{
+}
+
+function flow_p3(scroll)
+{
+}
+
+function flow_p4(scroll)
+{
+}
+
+function flow_p5(scroll)
+{
+
 }
