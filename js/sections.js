@@ -522,7 +522,7 @@ var scrollVis = function() {
   function showHistAll() {
 
 
-     $( ".osef" ).remove();
+    removePieChart();
 
 	d3.selectAll(".openvis-title")
       .transition()
@@ -599,21 +599,22 @@ var scrollVis = function() {
 
   function showFlow()
   {
-      $( ".osef" ).remove();
+      removePieChart();
       removeLineChart();
       flow("#vis");
   }
 
   function showLineChart()
   {
+      removePieChart();
       makeChart(svg);
   }
 
   function removeLineChart()
   {
-     d3.selectAll(".xx").remove()
-     d3.selectAll(".yy").remove()
-     d3.selectAll(".line").remove()
+     d3.selectAll(".x.leoLine").remove()
+     d3.selectAll(".y.leoLine").remove()
+     d3.selectAll(".lineChart").remove()
   }
 
   function showPieChart(){
@@ -634,6 +635,9 @@ var scrollVis = function() {
     Plot();
  }
 
+  function removePieChart(){
+    $( ".osef" ).remove();
+  }
 
   /**
    * UPDATE FUNCTIONS

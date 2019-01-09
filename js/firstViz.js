@@ -1,9 +1,9 @@
 
 function makeChart(svg)
 {
-    var	margin = {top: 30, right: 20, bottom: 30, left: 50},
+    var	margin = {top: 0, right: 10, bottom: 40, left: 20},
 	width = 600 - margin.left - margin.right,
-	height = 270 - margin.top - margin.bottom;
+	height = 520 - margin.top - margin.bottom;
 
     // Parse the date / time
     var	parseDate = d3.time.format("%d-%b-%y").parse;
@@ -37,18 +37,18 @@ function makeChart(svg)
 
 	// Add the valueline path.
 	svg.append("path")
-	    .attr("class", "line")
+	    .attr("class", "lineChart")
 	    .attr("d", valueline(data));
 
 	// Add the X Axis
 	svg.append("g")
-	    .attr("class", "xx")
+	    .attr("class", "x leoLine")
 	    .attr("transform", "translate(0," + height + ")")
 	    .call(xAxis);
 
 	// Add the Y Axis
 	svg.append("g")
-	    .attr("class", "yy")
+	    .attr("class", "y leoLine")
 	    .call(yAxis);
 
     });
