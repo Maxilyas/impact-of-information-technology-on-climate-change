@@ -283,8 +283,8 @@ var scrollVis = function() {
     activateFunctions[7] = showCough;
     activateFunctions[8] = showHistAll;
     activateFunctions[9] = showPieChart;
-    activateFunctions[10] = showUpdateChart;
-    activateFunctions[11] = showPieChart;
+    activateFunctions[10] = showUpdateChartCat1;
+    activateFunctions[11] = showUpdateChartCat2;
     activateFunctions[12] = showLineChart;
     activateFunctions[13] = showFlow;
     // updateFunctions are called while
@@ -638,8 +638,14 @@ var scrollVis = function() {
     invertDivAndSvg();
  }
 
-  function showUpdateChart(){
-    updateData();
+  function showUpdateChartCat1(){
+    updateDataCat1();
+
+  }
+
+   function showUpdateChartCat2(){
+    showPieChart();
+    updateDataCat2();
 
   }
 
