@@ -600,14 +600,39 @@ var scrollVis = function() {
   function showFlow()
   {
       $( ".osef" ).remove();
-
+      removeLineChart();
       flow("#vis");
   }
 
   function showLineChart()
   {
-      makeChart();
+      makeChart(svg);
   }
+
+  function removeLineChart()
+  {
+     d3.selectAll(".xx").remove()
+     d3.selectAll(".yy").remove()
+     d3.selectAll(".line").remove()
+  }
+
+  function showPieChart(){
+    removeLineChart();
+    d3.selectAll(".hist")
+      .transition()
+      .duration(0)
+      .style("opacity", 0);
+
+      d3.selectAll("flow")
+        .remove();
+
+    d3.select(".x.axis")
+      .transition().duration(500)
+      .style("opacity",0);
+
+    $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: -300px;"><div class="innerCont"/></div></div>')
+    Plot();
+ }
 
 
   /**
@@ -794,21 +819,6 @@ function display(data) {
   });
 }
 
-function showPieChart(){
-    d3.selectAll(".hist")
-      .transition()
-      .duration(0)
-      .style("opacity", 0);
 
-      d3.selectAll("flow")
-        .remove();
-
-    d3.select(".x.axis")
-      .transition().duration(500)
-      .style("opacity",0);
-
-    $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: -300px;"><div class="innerCont"/></div></div>')
-    Plot();
-}
 // load data and display
 d3.tsv("data/words.tsv", display);

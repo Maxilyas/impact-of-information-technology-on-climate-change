@@ -1,4 +1,5 @@
-function makeChart()
+
+function makeChart(svg)
 {
     var	margin = {top: 30, right: 20, bottom: 30, left: 50},
 	width = 600 - margin.left - margin.right,
@@ -22,17 +23,7 @@ function makeChart()
     var	valueline = d3.svg.line()
 	.x(function(d) { return x(d.date); })
 	.y(function(d) { return y(d.close); });
-
-    // Adds the svg canvas
-    var	svg = d3.select("body")
-	.append("svg")
-	.attr("width", width + margin.left + margin.right)
-	.attr("height", height + margin.top + margin.bottom)
-	.append("g")
-	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    $("#viz").append(svg);
-
+ 
     // Get the data
     d3.csv("./data/data.csv", function(error, data) {
 	data.forEach(function(d) {
@@ -51,13 +42,13 @@ function makeChart()
 
 	// Add the X Axis
 	svg.append("g")
-	    .attr("class", "x axis")
+	    .attr("class", "xx")
 	    .attr("transform", "translate(0," + height + ")")
 	    .call(xAxis);
 
 	// Add the Y Axis
 	svg.append("g")
-	    .attr("class", "y axis")
+	    .attr("class", "yy")
 	    .call(yAxis);
 
     });
