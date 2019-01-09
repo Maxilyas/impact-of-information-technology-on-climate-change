@@ -283,15 +283,17 @@ var scrollVis = function() {
     activateFunctions[7] = showCough;
     activateFunctions[8] = showHistAll;
     activateFunctions[9] = showPieChart;
-    activateFunctions[10] = showLineChart;
-    activateFunctions[11] = showFlow;
+    activateFunctions[10] = showUpdateChart;
+    activateFunctions[11] = showPieChart;
+    activateFunctions[12] = showLineChart;
+    activateFunctions[13] = showFlow;
     // updateFunctions are called while
     // in a particular section to update
     // the scroll progress in that section.
     // Most sections do not need to be updated
     // for all scrolling and so are set to
     // no-op functions.
-    for(var i = 0; i < 12; i++) {
+    for(var i = 0; i < 14; i++) {
       updateFunctions[i] = function() {};
     }
     updateFunctions[7] = updateCough;
@@ -635,6 +637,11 @@ var scrollVis = function() {
     Plot();
     invertDivAndSvg();
  }
+
+  function showUpdateChart(){
+    updateData();
+
+  }
 
   function invertDivAndSvg()
   {
