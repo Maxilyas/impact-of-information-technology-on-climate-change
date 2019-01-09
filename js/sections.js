@@ -170,15 +170,21 @@ var scrollVis = function() {
           .attr("x", width / 4)
           .attr("y", (height / 6) + (height / 10) )
           .text("Les references");
-
+	    
+	g.append("text")
+      .attr("class", "flow-intro")
+      .attr("x", width / 2)
+      .attr("y", height / 3)
+      .text("L'impact du numérique");
 
     g.selectAll(".openvis-title")
       .attr("opacity", 0);
 
     g.selectAll(".ref")
           .attr("opacity", 0);
-
-
+	
+	g.selectAll(".flow-intro")
+          .attr("opacity", 0);
     // count filler word count title
     g.append("text")
       .attr("class", "title count-title highlight")
@@ -289,12 +295,13 @@ var scrollVis = function() {
         activateFunctions[3] = showUpdateChartCat1;
         activateFunctions[4] = showUpdateChartCat2;
 		activateFunctions[5] = showUpdateChartCat3;
-        activateFunctions[6] = showFlowP1;
-        activateFunctions[7] = showFlowP2;
-        activateFunctions[8] = showFlowP3;
-        activateFunctions[9] = showFlowP4;
-        activateFunctions[10] = showFlowP5;
-        activateFunctions[11] = showRef;
+		activateFunctions[6] = showFlowIntro;
+        activateFunctions[7] = showFlowP1;
+        activateFunctions[8] = showFlowP2;
+        activateFunctions[9] = showFlowP3;
+        activateFunctions[10] = showFlowP4;
+        activateFunctions[11] = showFlowP5;
+        activateFunctions[12] = showRef;
 
         // updateFunctions are called while
         // in a particular section to update
@@ -379,10 +386,24 @@ var scrollVis = function() {
             .duration(600)
             .attr("opacity", 1.0);
     }
+	
+	function showFlowIntro(){
+		removeFlow();
+		removePieChart();
+		d3.selectAll(".flow-intro")
+            .transition()
+            .duration(600)
+            .attr("opacity", 1);
+	
+	}
 
     function showFlowP1()
     {
         g.selectAll(".ref")
+            .attr("opacity", 0);
+		d3.selectAll(".flow-intro")
+            .transition()
+            .duration(200)
             .attr("opacity", 0);
         removePieChart();
         removeFlow();
@@ -466,6 +487,10 @@ var scrollVis = function() {
 	function showUpdateChartCat3(){
 		removePieChart()
 		removeFlow();
+		d3.selectAll(".flow-intro")
+            .transition()
+            .duration(200)
+            .attr("opacity", 0);
 		showPieChart();
 		updateDataCat3();
 
