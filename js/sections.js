@@ -606,13 +606,13 @@ var scrollVis = function() {
       flow("#vis");
   }
 
-  function showLineChart()
+    function showLineChart()
   {
       removePieChart();
       d3.selectAll("flow")
         .remove();
 
-      makeChart(svg);
+      makeChart(svg, 19);
   }
 
   function removeLineChart()

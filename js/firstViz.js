@@ -1,5 +1,5 @@
 
-function makeChart(svg)
+function makeChart(svg, nb)
 {
     var	margin = {top: 0, right: 10, bottom: 40, left: 20},
 	width = 600 - margin.left - margin.right,
@@ -22,18 +22,19 @@ function makeChart(svg)
     // Define the line
     var	valueline = d3.svg.line()
 	.x(function(d) { return x(d.date); })
-	.y(function(d) { return y(d.close); });
+	.y(function(d) { return y(d.TWh); });
  
     // Get the data
     d3.csv("./data/data.csv", function(error, data) {
-	data.forEach(function(d) {
-	    d.date = parseDate(d.date);
-	    d.close = +d.close;
-	});
+        for (var i = 0; i<nb; i++) {
+            console.log(data[i])
+	    data[i].date = parseDate(data[i].date);
+	    data[i].TWh = +data[i].TWh;
+	};
 
 	// Scale the range of the data
 	x.domain(d3.extent(data, function(d) { return d.date; }));
-	y.domain([0, d3.max(data, function(d) { return d.close; })]);
+	y.domain([0, d3.max(data, function(d) { return d.TWh; })]);
 
 	// Add the valueline path.
 	svg.append("path")
