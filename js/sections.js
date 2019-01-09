@@ -631,9 +631,17 @@ var scrollVis = function() {
       .transition().duration(500)
       .style("opacity",0);
 
-    $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: -300px;"><div class="innerCont"/></div></div>')
+    $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: 0px;"><div class="innerCont"/></div></div>')
     Plot();
+    invertDivAndSvg();
  }
+
+  function invertDivAndSvg()
+  {
+    $('.osef:parent').each(function () {
+    $(this).insertBefore($(this).prev('svg'));
+    });
+  }
 
   function removePieChart(){
     $( ".osef" ).remove();
