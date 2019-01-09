@@ -2,8 +2,8 @@
 function makeChart(svg)
 {
 
-    var margin = {top: 0, right: 10, bottom: 40, left: 20},
-        width = 500 - margin.left - margin.right,
+    var margin = {top:0, left:20, bottom:40, right:10},
+        width = 600 - margin.left - margin.right,
         height = 520 - margin.top - margin.bottom;
 
     // Parse the date / time
@@ -40,17 +40,19 @@ function makeChart(svg)
 	var pathLineChart = svg.append("path")
 	    .attr("class", "lineChart")
 	    .attr("d", valueline(data))
+            .attr("transform", "translate(50,0)")
             .style("opacity", "0");
 
 	// Add the X Axis
 	svg.append("g")
 	    .attr("class", "x leoLine")
-	    .attr("transform", "translate(0," + height + ")")
+	    .attr("transform", "translate(50," + height + ")")
 	    .call(xAxis);
 
 	// Add the Y Axis
 	svg.append("g")
 	    .attr("class", "y leoLine")
+            .attr("transform", "translate(50,0)")
 	    .call(yAxis);
 
         pathLineChart.transition()
@@ -82,7 +84,7 @@ function addStep(nbStep)
 	// Add the X Axis
 	svg.append("g")
 	    .attr("class", "x leoLine")
-	    .attr("transform", "translate(0," + height + ")")
+	    .attr("transform", "translate(0," + height-2000 + ")")
 	    .call(xAxis);
 
 	// Add the Y Axis
