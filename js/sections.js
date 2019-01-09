@@ -607,6 +607,9 @@ var scrollVis = function() {
   function showLineChart()
   {
       removePieChart();
+      d3.selectAll("flow")
+        .remove();
+
       makeChart(svg);
   }
 
@@ -623,9 +626,6 @@ var scrollVis = function() {
       .transition()
       .duration(0)
       .style("opacity", 0);
-
-      d3.selectAll("flow")
-        .remove();
 
     d3.select(".x.axis")
       .transition().duration(500)
