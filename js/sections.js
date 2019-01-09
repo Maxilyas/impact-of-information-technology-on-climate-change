@@ -391,7 +391,8 @@ var scrollVis = function() {
             .transition()
             .duration(600)
             .attr("opacity", 0);
-        
+        $('svg').css('margin-top', '12%');
+
         makeChart(svg, 19);
             
     }
@@ -416,7 +417,7 @@ var scrollVis = function() {
 			.transition().duration(500)
 			.style("opacity",0);
 
-		$('#vis').append('<div id="chart" class="osef" style="  position: relative;top: 0px;"><div class="innerCont"/></div></div>')
+		$('#vis').append('<div id="chart" class="osef" style="  position: relative;top: 20%;"><div class="innerCont"/></div></div>')
 		Plot();
 		invertDivAndSvg();
 	}
