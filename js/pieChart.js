@@ -309,6 +309,24 @@ function updateDataCat2(){
     
 }
 
+function updateDataCat3(){
+
+    level = 0
+    d3.select("#" + "chart" + " .innerCont").attr("transform", "translate(0,0)")
+    d3.selectAll("#" + "chart" + " svg").remove();
+    if (level == 1) {
+        TransformChartData(chartData, chartOptions, 0,"Utilisateur");
+        BuildPie("chart", chartData, chartOptions, 0);
+    } else {
+        var nonSortedChart = chartData.sort(function(a, b) {
+            return parseFloat(b[chartOptions[0].yaxis]) - parseFloat(a[chartOptions[0].yaxis]);
+        });
+        TransformChartData(nonSortedChart, chartOptions, 1, "Utilisateur");
+        BuildPie("chart", nonSortedChart, chartOptions, 1);
+    }
+    
+}
+
 chartOptions = [{
     "captions": [{
         "Production": "Production",
@@ -327,18 +345,43 @@ chartOptions = [{
 
 var chartData = [{
         "Consumption": "Utilisateur",
-        "Model": "Utilisateur",
-        "Total": 20
+        "Model": "Routeur",
+        "Total": 3
+    },
+	{
+        "Consumption": "Utilisateur",
+        "Model": "TV",
+        "Total": 11
+    },
+	{
+        "Consumption": "Utilisateur",
+        "Model": "Ordinateur",
+        "Total": 4
+    },	
+	{
+        "Consumption": "Utilisateur",
+        "Model": "smartphone",
+        "Total": 1
+    },
+	{
+        "Consumption": "Utilisateur",
+        "Model": "Autres",
+        "Total": 1
     },
     {
         "Consumption": "Production",
-        "Model": "Computer",
+        "Model": "Ordinateur",
         "Total": 17
     },
     {
         "Consumption": "Infrastructure",
-        "Model": "Data centers",
-        "Total": 19
+        "Model": "Consommation Data centers",
+        "Total": 11.4
+    },
+	{
+        "Consumption": "Infrastructure",
+        "Model": "Climatisation Data centers",
+        "Total": 7.6
     },
     {
         "Consumption": "Infrastructure",
@@ -357,7 +400,7 @@ var chartData = [{
     },
     {
         "Consumption": "Production",
-        "Model": "Autre",
+        "Model": "Autres",
         "Total": 5
     }
 ];

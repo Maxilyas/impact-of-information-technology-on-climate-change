@@ -129,7 +129,6 @@ var scrollVis = function() {
       yHistScale.domain([0, histMax]);
 
       setupVis(wordData, fillerCounts, histData);
-
       setupSections();
 
     });
@@ -176,8 +175,10 @@ var scrollVis = function() {
     g.selectAll(".openvis-title")
       .attr("opacity", 0);
 
-      g.selectAll(".ref")
+    g.selectAll(".ref")
           .attr("opacity", 0);
+		  
+	
     // count filler word count title
     g.append("text")
       .attr("class", "title count-title highlight")
@@ -287,8 +288,9 @@ var scrollVis = function() {
         activateFunctions[2] = showPieChart;
         activateFunctions[3] = showUpdateChartCat1;
         activateFunctions[4] = showUpdateChartCat2;
-        activateFunctions[5] = showFlow;
-        activateFunctions[6] = showRef;;
+		activateFunctions[5] = showUpdateChartCat3;
+        activateFunctions[6] = showFlow;
+        activateFunctions[7] = showRef;;
 
         // updateFunctions are called while
         // in a particular section to update
@@ -296,7 +298,7 @@ var scrollVis = function() {
         // Most sections do not need to be updated
         // for all scrolling and so are set to
         // no-op functions.
-        for(var i = 0; i < 7; i++) {
+        for(var i = 0; i < 8; i++) {
             updateFunctions[i] = function() {};
         }
     };
@@ -392,55 +394,63 @@ var scrollVis = function() {
         
         makeChart(svg, 19);
             
-        }
+    }
 
-        function removeLineChart()
-        {
-            d3.selectAll(".x.leoLine").remove()
-            d3.selectAll(".y.leoLine").remove()
-            d3.selectAll(".lineChart").remove()
-        }
+	function removeLineChart()
+	{
+		d3.selectAll(".x.leoLine").remove()
+		d3.selectAll(".y.leoLine").remove()
+		d3.selectAll(".lineChart").remove()
+	}
 
-        function showPieChart(){
-            removeLineChart();
-            d3.selectAll(".hist")
-                .transition()
-                .duration(0)
-                .style("opacity", 0);
+	function showPieChart(){
+		removeLineChart();
+		removePieChart()
+		removeLineChart();
+		d3.selectAll(".hist")
+			.transition()
+			.duration(0)
+			.style("opacity", 0);
 
-            d3.select(".x.axis")
-                .transition().duration(500)
-                .style("opacity",0);
+		d3.select(".x.axis")
+			.transition().duration(500)
+			.style("opacity",0);
 
-            $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: 0px;"><div class="innerCont"/></div></div>')
-            Plot();
-            invertDivAndSvg();
-        }
+		$('#vis').append('<div id="chart" class="osef" style="  position: relative;top: 0px;"><div class="innerCont"/></div></div>')
+		Plot();
+		invertDivAndSvg();
+	}
 
-        function showUpdateChartCat1(){
-            updateDataCat1();
-        }
+	function showUpdateChartCat1(){
+		removePieChart()
+		showPieChart();
+		updateDataCat1();
+	}
 
-        function showUpdateChartCat2(){
-            
-            d3.selectAll("flow")
-                .remove();
+	function showUpdateChartCat2(){
+		removePieChart()
+		showPieChart();
+		updateDataCat2();
 
-            showPieChart();
-            updateDataCat2();
+	}
+	function showUpdateChartCat3(){
+		removePieChart()
+		removeFlow();
+		showPieChart();
+		updateDataCat3();
 
-        }
+	}
 
-        function invertDivAndSvg()
-        {
-            $('.osef:parent').each(function () {
-                $(this).insertBefore($(this).prev('svg'));
-            });
-        }
+	function invertDivAndSvg()
+	{
+		$('.osef:parent').each(function () {
+			$(this).insertBefore($(this).prev('svg'));
+		});
+	}
 
-        function removePieChart(){
-            $( ".osef" ).remove();
-        }
+	function removePieChart(){
+		$( ".osef" ).remove();
+	}
 
   /**
    * showGrid - square grid
