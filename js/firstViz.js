@@ -2,9 +2,9 @@
 function makeChart(svg)
 {
 
-    var margin = {top:0, left:20, bottom:40, right:10},
-        width = 600 - margin.left - margin.right,
-        height = 400 -  margin.top - margin.bottom;
+    var margin = {top:0, left:0, bottom:0, right:0},
+        width = 500 - margin.left - margin.right,
+        height = 450 -  margin.top - margin.bottom;
 
     // Parse the date / time
     var parseDate = d3.time.format("%Y").parse;
@@ -15,7 +15,7 @@ function makeChart(svg)
 
     // Define the axes
     var xAxis = d3.svg.axis().scale(x)
-        .orient("bottom").ticks(5);
+        .orient("bottom").ticks(8);
 
     var yAxis = d3.svg.axis().scale(y)
         .orient("left").ticks(5);
@@ -72,7 +72,7 @@ function makeChart(svg)
             .attr("stroke-dashoffset", totalLength)
             .style("opacity", "1")
             .transition()
-            .duration(8000)
+            .duration(6000)
             .ease("linear")
             .attr("stroke-dashoffset", 0)
     });

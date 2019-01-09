@@ -391,7 +391,7 @@ var scrollVis = function() {
             .transition()
             .duration(600)
             .attr("opacity", 0);
-        $('svg').css('margin-top', '20%');
+        $('svg').css('margin-top', '12%');
 
         makeChart(svg, 19);
             
