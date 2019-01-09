@@ -309,6 +309,24 @@ function updateDataCat2(){
     
 }
 
+function updateDataCat3(){
+
+    level = 0
+    d3.select("#" + "chart" + " .innerCont").attr("transform", "translate(0,0)")
+    d3.selectAll("#" + "chart" + " svg").remove();
+    if (level == 1) {
+        TransformChartData(chartData, chartOptions, 0,"Utilisateur");
+        BuildPie("chart", chartData, chartOptions, 0);
+    } else {
+        var nonSortedChart = chartData.sort(function(a, b) {
+            return parseFloat(b[chartOptions[0].yaxis]) - parseFloat(a[chartOptions[0].yaxis]);
+        });
+        TransformChartData(nonSortedChart, chartOptions, 1, "Utilisateur");
+        BuildPie("chart", nonSortedChart, chartOptions, 1);
+    }
+    
+}
+
 chartOptions = [{
     "captions": [{
         "Production": "Production",
