@@ -4,7 +4,7 @@ function makeChart(svg)
 
     var margin = {top:0, left:20, bottom:40, right:10},
         width = 600 - margin.left - margin.right,
-        height = 520 - margin.top - margin.bottom;
+        height = 400 -  margin.top - margin.bottom;
 
     // Parse the date / time
     var parseDate = d3.time.format("%Y").parse;
@@ -40,56 +40,41 @@ function makeChart(svg)
 	var pathLineChart = svg.append("path")
 	    .attr("class", "lineChart")
 	    .attr("d", valueline(data))
-            .attr("transform", "translate(50,0)")
+            .attr("transform", "translate(80,0)")
             .style("opacity", "0");
 
 	// Add the X Axis
-	svg.append("g")
+	var xAxisL = svg.append("g")
 	    .attr("class", "x leoLine")
-	    .attr("transform", "translate(50," + height + ")")
+            .style("opacity", "0")
+	    .attr("transform", "translate(80," + height + ")")
 	    .call(xAxis);
 
 	// Add the Y Axis
-	svg.append("g")
+	var yAxisL = svg.append("g")
 	    .attr("class", "y leoLine")
-            .attr("transform", "translate(50,0)")
+            .style("opacity", "0")
+            .attr("transform", "translate(80,0)")
 	    .call(yAxis);
 
-        pathLineChart.transition()
+        xAxisL.transition()
             .duration(2000)
             .style("opacity", "1");
+
+        
+        yAxisL.transition()
+            .duration(2000)
+            .style("opacity", "1");
+
+        var totalLength = pathLineChart.node().getTotalLength();
+        pathLineChart
+            .attr("stroke-dasharray", totalLength + " " + totalLength)
+            .attr("stroke-dashoffset", totalLength)
+            .style("opacity", "1")
+            .transition()
+            .duration(8000)
+            .ease("linear")
+            .attr("stroke-dashoffset", 0)
     });
 }
 
-
-
-function addStep(nbStep)
-{
-    // Get the data
-    d3.csv("./data/data.csv", function(error, data) {
-        for (var i = 0; i<1; i++) {
-	    data[i].date = parseDate(data[i].date);
-	    data[i].TWh = +data[i].TWh;
-	};
-
-	// Scale the range of the data
-	x.domain(d3.extent(data, function(d) { return d.date; }));
-	y.domain([0, d3.max(data, function(d) { return d.TWh; })]);
-
-	// Add the valueline path.
-	svg.append("path")
-	    .attr("class", "lineChart")
-	    .attr("d", valueline(data));
-
-	// Add the X Axis
-	svg.append("g")
-	    .attr("class", "x leoLine")
-	    .attr("transform", "translate(0," + height-2000 + ")")
-	    .call(xAxis);
-
-	// Add the Y Axis
-	svg.append("g")
-	    .attr("class", "y leoLine")
-	    .call(yAxis);
-    });
-}
