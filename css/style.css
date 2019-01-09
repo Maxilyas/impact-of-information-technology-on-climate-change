@@ -1,5 +1,5 @@
 /* General style */
-body { background-color:#e0ecf4 }
+body { background-color:#CCFF99 }
 
 .container {
     width: 50%;
@@ -16,7 +16,7 @@ body { background-color:#e0ecf4 }
     width: 50%;
     /* top: 0%; */
     z-index: 90;
-    /* padding-bottom: 200px; */
+    padding-right: 20px;
 }
 
 .step {
@@ -24,7 +24,7 @@ body { background-color:#e0ecf4 }
     font-family: "TiemposTextWeb-Regular","Georgia";
     font-size: 16px;
     line-height: 23px;
-    color: #767678;
+    color: #666666;
 }
 
 #sections .title {
@@ -32,7 +32,8 @@ body { background-color:#e0ecf4 }
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 2px;
-    color: #262626;
+    margin-top: 180px;
+    color: #000000;
     line-height: 1.2em;
 }
 
@@ -44,10 +45,10 @@ body { background-color:#e0ecf4 }
     display: inline-block;
     position: fixed;
     z-index: 1;
-    /* margin-left: 0%; */
+    margin-right: 200px;
     height: 100%;
     width: 50%;
-    background-color: #e0dcff; 
+    background-color: #99FFFF; 
 }
 
 #vis .title {
