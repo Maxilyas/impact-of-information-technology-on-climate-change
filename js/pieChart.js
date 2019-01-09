@@ -157,7 +157,7 @@ function BuildPie(id, chartData, options, level) {
 
     var leg = legend.append("rect");
 
-    leg.attr("x", width / 2 + 5)
+    leg.attr("x", width / 2 + 40)
         .attr("width", 18).attr("height", 18)
         .style("fill", function(d) {
             return rcolor(d[yVarName]);
@@ -165,7 +165,7 @@ function BuildPie(id, chartData, options, level) {
         .style("opacity", function(d) {
             return d["op"];
         });
-    legend.append("text").attr("x", (width / 2))
+    legend.append("text").attr("x", (width / 2) + 35 )
         .attr("y", 9).attr("dy", ".35em")
         .style("text-anchor", "end").text(function(d) {
             return d.caption;
@@ -226,9 +226,9 @@ function TransformChartData(chartData, opts, level, filter) {
                     ditem = {}
                     ditem[xVarName] = chartData[i][xVarName];
                     ditem[yVarName] = chartData[i][yVarName];
-                    ditem["caption"] = chartData[i][xVarName].substring(0, 10) + '...';
+                    ditem["caption"] = chartData[i][xVarName];
                     ditem["title"] = chartData[i][xVarName];
-                    ditem["op"] = 1.0 - parseFloat("0." + (result.length));
+                    ditem["op"] = 1.0 - parseFloat("0." + (2*result.length));
                     result.push(ditem);
 
                     resultColors[counter] = opts[0].color[0][chartData[i][opts[0].xaxis]];
@@ -315,13 +315,13 @@ function updateDataCat3(){
     d3.select("#" + "chart" + " .innerCont").attr("transform", "translate(0,0)")
     d3.selectAll("#" + "chart" + " svg").remove();
     if (level == 1) {
-        TransformChartData(chartData, chartOptions, 0,"Utilisateur");
+        TransformChartData(chartData, chartOptions, 0,"Utilisation");
         BuildPie("chart", chartData, chartOptions, 0);
     } else {
         var nonSortedChart = chartData.sort(function(a, b) {
             return parseFloat(b[chartOptions[0].yaxis]) - parseFloat(a[chartOptions[0].yaxis]);
         });
-        TransformChartData(nonSortedChart, chartOptions, 1, "Utilisateur");
+        TransformChartData(nonSortedChart, chartOptions, 1, "Utilisation");
         BuildPie("chart", nonSortedChart, chartOptions, 1);
     }
     
@@ -330,13 +330,13 @@ function updateDataCat3(){
 chartOptions = [{
     "captions": [{
         "Production": "Production",
-        "Utilisateur": "Utilisateur",
+        "Utilisation": "Utilisation",
         "Infrastructure": "Infrastructure"
     }],
     "color": [{
         "Production": "#FFA500",
-        "Utilisateur": "#ff0000",
-        "Infrastructure": "#008000"
+        "Utilisation": "#960018",
+        "Infrastructure": "#397D02"
     }],
     "xaxis": "Consumption",
     "xaxisl1": "Model",
@@ -344,33 +344,33 @@ chartOptions = [{
 }]
 
 var chartData = [{
-        "Consumption": "Utilisateur",
-        "Model": "Routeur",
+        "Consumption": "Utilisation",
+        "Model": "Routeurs",
         "Total": 3
     },
 	{
-        "Consumption": "Utilisateur",
+        "Consumption": "Utilisation",
         "Model": "TV",
         "Total": 11
     },
 	{
-        "Consumption": "Utilisateur",
-        "Model": "Ordinateur",
+        "Consumption": "Utilisation",
+        "Model": "Ordinateurs",
         "Total": 4
     },	
 	{
-        "Consumption": "Utilisateur",
-        "Model": "smartphone",
+        "Consumption": "Utilisation",
+        "Model": "Smartphones",
         "Total": 1
     },
 	{
-        "Consumption": "Utilisateur",
+        "Consumption": "Utilisation",
         "Model": "Autres",
         "Total": 1
     },
     {
         "Consumption": "Production",
-        "Model": "Ordinateur",
+        "Model": "Ordinateurs",
         "Total": 17
     },
     {
@@ -385,12 +385,12 @@ var chartData = [{
     },
     {
         "Consumption": "Infrastructure",
-        "Model": "Reseau",
+        "Model": "Reseaux",
         "Total": 16
     },
     {
         "Consumption": "Production",
-        "Model": "Smartphone",
+        "Model": "Smartphones",
         "Total": 12
     },
     {
