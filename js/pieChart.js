@@ -2,7 +2,6 @@ var salesData;
 var chartInnerDiv = '<div class="innerCont";"/>';
 var truncLengh = 30;
 
-
 function Plot() {
     TransformChartData(chartData, chartOptions, 0);
     BuildPie("chart", chartData, chartOptions, 0)
@@ -274,7 +273,7 @@ function TransformChartData(chartData, opts, level, filter) {
     return;
 }
 
-function updateData(){
+function updateDataCat1(){
 
     level = 0
     d3.select("#" + "chart" + " .innerCont").attr("transform", "translate(0,0)")
@@ -290,8 +289,24 @@ function updateData(){
         BuildPie("chart", nonSortedChart, chartOptions, 1);
     }
     
+}
 
+function updateDataCat2(){
 
+    level = 0
+    d3.select("#" + "chart" + " .innerCont").attr("transform", "translate(0,0)")
+    d3.selectAll("#" + "chart" + " svg").remove();
+    if (level == 1) {
+        TransformChartData(chartData, chartOptions, 0,"Infrastructure");
+        BuildPie("chart", chartData, chartOptions, 0);
+    } else {
+        var nonSortedChart = chartData.sort(function(a, b) {
+            return parseFloat(b[chartOptions[0].yaxis]) - parseFloat(a[chartOptions[0].yaxis]);
+        });
+        TransformChartData(nonSortedChart, chartOptions, 1, "Infrastructure");
+        BuildPie("chart", nonSortedChart, chartOptions, 1);
+    }
+    
 }
 
 chartOptions = [{

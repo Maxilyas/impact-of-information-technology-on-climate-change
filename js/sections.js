@@ -20,13 +20,64 @@ var scrollVis = function() {
   var lastIndex = -1;
   var activeIndex = 0;
 
+  // Sizing for the grid visualization
+  var squareSize = 6;
+  var squarePad = 2;
+  var numPerRow = width / (squareSize + squarePad);
+
   // main svg used for visualization
   var svg = null;
 
   // d3 selection that will be used
   // for displaying visualizations
   var g = null;
- 
+
+  // We will set the domain when the
+  // data is processed.
+  var xBarScale = d3.scale.linear()
+    .range([0, width]);
+
+  // The bar chart display is horizontal
+  // so we can use an ordinal scale
+  // to get width and y locations.
+  var yBarScale = d3.scale.ordinal()
+    .domain([0,1,2])
+    .rangeBands([0, height - 50], 0.1, 0.1);
+
+  // Color is determined just by the index of the bars
+  var barColors = {0: "#008080", 1: "#399785", 2: "#5AAF8C"};
+
+  // The histogram display shows the
+  // first 30 minutes of data
+  // so the range goes from 0 to 30
+  var xHistScale = d3.scale.linear()
+    .domain([0, 30])
+    .range([0, width - 20]);
+
+  var yHistScale = d3.scale.linear()
+    .range([height, 0]);
+
+  // The color translation uses this
+  // scale to convert the progress
+  // through the section into a
+  // color value.
+  var coughColorScale = d3.scale.linear()
+    .domain([0,1.0])
+    .range(["#008080", "red"]);
+
+  // You could probably get fancy and
+  // use just one axis, modifying the
+  // scale, but I will use two separate
+  // ones to keep things easy.
+  var xAxisBar = d3.svg.axis()
+    .scale(xBarScale)
+    .orient("bottom");
+
+  var xAxisHist = d3.svg.axis()
+    .scale(xHistScale)
+    .orient("bottom")
+    .tickFormat(function(d) { return d + " min"; });
+
   // When scrolling to a new section
   // the activation function for that
   // section is called.
@@ -59,6 +110,26 @@ var scrollVis = function() {
       g = svg.select("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+      // perform some preprocessing on raw data
+      var wordData = getWords(rawData);
+      // filter to just include filler words
+      var fillerWords = getFillerWords(wordData);
+
+      // get the counts of filler words for the
+      // bar chart display
+      var fillerCounts = groupByWord(fillerWords);
+      // set the bar scale's domain
+      var countMax = d3.max(fillerCounts, function(d) { return d.values;});
+      xBarScale.domain([0,countMax]);
+
+      // get aggregated histogram data
+      var histData = getHistogram(fillerWords);
+      // set histogram's domain
+      var histMax = d3.max(histData, function(d) { return d.y; });
+      yHistScale.domain([0, histMax]);
+
+      setupVis(wordData, fillerCounts, histData);
+
       setupSections();
 
     });
@@ -75,6 +146,13 @@ var scrollVis = function() {
    * @param histData - binned histogram data
    */
   setupVis = function(wordData, fillerCounts, histData) {
+    // axis
+    g.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxisBar);
+    g.select(".x.axis").style("opacity", 0);
+
     // count openvis title
     g.append("text")
       .attr("class", "title openvis-title")
@@ -88,9 +166,18 @@ var scrollVis = function() {
       .attr("y", (height / 3) + (height / 5) )
       .text("OpenVis Conf");
 
+      g.append("text")
+          .attr("class", "ref")
+          .attr("x", width / 4)
+          .attr("y", (height / 6) + (height / 10) )
+          .text("Les references");
+
+      
     g.selectAll(".openvis-title")
       .attr("opacity", 0);
 
+      g.selectAll(".ref")
+          .attr("opacity", 0);
     // count filler word count title
     g.append("text")
       .attr("class", "title count-title highlight")
@@ -107,6 +194,82 @@ var scrollVis = function() {
     g.selectAll(".count-title")
       .attr("opacity", 0);
 
+    // square grid
+    var squares = g.selectAll(".square").data(wordData);
+    squares.enter()
+      .append("rect")
+      .attr("width", squareSize)
+      .attr("height", squareSize)
+      .attr("fill", "#fff")
+      .classed("square", true)
+      .classed("fill-square", function(d) { return d.filler; })
+      .attr("x", function(d) { return d.x;})
+      .attr("y", function(d) { return d.y;})
+      .attr("opacity", 0);
+
+    // barchart
+    var bars = g.selectAll(".bar").data(fillerCounts);
+    bars.enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", 0)
+      .attr("y", function(d,i) { return yBarScale(i);})
+      .attr("fill", function(d,i) { return barColors[i]; })
+      .attr("width", 0)
+      .attr("height", yBarScale.rangeBand());
+
+    var barText = g.selectAll(".bar-text").data(fillerCounts);
+    barText.enter()
+      .append("text")
+      .attr("class", "bar-text")
+      .text(function(d) { return d.key + "…"; })
+      .attr("x", 0)
+      .attr("dx", 15)
+      .attr("y", function(d,i) { return yBarScale(i);})
+      .attr("dy", yBarScale.rangeBand() / 1.2)
+      .style("font-size", "110px")
+      .attr("fill", "white")
+      .attr("opacity", 0);
+
+    // histogram
+    var hist = g.selectAll(".hist").data(histData);
+    hist.enter().append("rect")
+      .attr("class", "hist")
+      .attr("x", function(d) { return xHistScale(d.x); })
+      .attr("y", height)
+      .attr("height", 0)
+      .attr("width", xHistScale(histData[0].dx) - 1)
+      .attr("fill", barColors[0])
+      .attr("opacity", 0);
+
+    // cough title
+    g.append("text")
+      .attr("class", "sub-title cough cough-title")
+      .attr("x", width / 2)
+      .attr("y", 60)
+      .text("cough")
+      .attr("opacity", 0);
+
+    // arrowhead from
+    // http://logogin.blogspot.com/2013/02/d3js-arrowhead-markers.html
+    svg.append("defs").append("marker")
+      .attr("id", "arrowhead")
+      .attr("refY", 2)
+      .attr("markerWidth", 6)
+      .attr("markerHeight", 4)
+      .attr("orient", "auto")
+      .append("path")
+      .attr("d", "M 0,0 V 4 L6,2 Z");
+
+    g.append("path")
+      .attr("class", "cough cough-arrow")
+      .attr("marker-end", "url(#arrowhead)")
+      .attr("d", function() {
+        var line = "M " + ((width / 2) - 10) + " " + 80;
+        line += " l 0 " + 230;
+        return line;
+      })
+      .attr("opacity", 0);
   };
 
   /**
@@ -116,86 +279,168 @@ var scrollVis = function() {
    * the section's index.
    *
    */
-  setupSections = function() {
-    // activateFunctions are called each
-    // time the active section changes
-    activateFunctions[0] = showTitle;
-    activateFunctions[1] = showPieChart;
-    activateFunctions[2] = showUpdateChart;
-    activateFunctions[3] = showPieChart;
-    activateFunctions[4] = showLineChart;
-    activateFunctions[5] = showFlow;
-    // updateFunctions are called while
-    // in a particular section to update
-    // the scroll progress in that section.
-    // Most sections do not need to be updated
-    // for all scrolling and so are set to
-    // no-op functions.
-    for(var i = 0; i < 14; i++) {
-      updateFunctions[i] = function() {};
+    setupSections = function() {
+        // activateFunctions are called each
+        // time the active section changes
+        activateFunctions[0] = showTitle;
+        activateFunctions[1] = showLineChart;
+        activateFunctions[2] = showPieChart;
+        activateFunctions[3] = showUpdateChartCat1;
+        activateFunctions[4] = showUpdateChartCat2;
+        activateFunctions[5] = showFlow;
+        activateFunctions[6] = showRef;;
+
+        // updateFunctions are called while
+        // in a particular section to update
+        // the scroll progress in that section.
+        // Most sections do not need to be updated
+        // for all scrolling and so are set to
+        // no-op functions.
+        for(var i = 0; i < 7; i++) {
+            updateFunctions[i] = function() {};
+        }
+    };
+
+    /**
+     * ACTIVATE FUNCTIONS
+     *
+     * These will be called their
+     * section is scrolled to.
+     *
+     * General pattern is to ensure
+     * all content for the current section
+     * is transitioned in, while hiding
+     * the content for the previous section
+     * as well as the next section (as the
+     * user may be scrolling up or down).
+     *
+     */
+
+    /**
+     * showTitle - initial title
+     *
+     * hides: count title
+     * (no previous step to hide)
+     * shows: intro title
+     *
+     */
+    function showTitle() {
+        removeLineChart();
+        g.selectAll(".count-title")
+            .transition()
+            .duration(0)
+            .attr("opacity", 0);
+
+        g.selectAll(".openvis-title")
+            .transition()
+            .duration(600)
+            .attr("opacity", 1.0);
     }
-    updateFunctions[7] = updateCough;
-  };
 
-  /**
-   * ACTIVATE FUNCTIONS
-   *
-   * These will be called their
-   * section is scrolled to.
-   *
-   * General pattern is to ensure
-   * all content for the current section
-   * is transitioned in, while hiding
-   * the content for the previous section
-   * as well as the next section (as the
-   * user may be scrolling up or down).
-   *
-   */
+    function removeFlow() {
+        d3.selectAll("flow")
+            .remove();
+    }
+    
+    function showRef() {
+        removeFlow();
+        g.selectAll(".ref")
+            .transition()
+            .duration(600)
+            .attr("opacity", 1);
+    }
+    /**
+     * showFillerTitle - filler counts
+     *
+     * hides: intro title
+     * hides: square grid
+     * shows: filler count title
+     *
+     */
+    function showFillerTitle() {
+        g.selectAll(".openvis-title")
+            .transition()
+            .duration(0)
+            .attr("opacity", 0);
 
-  /**
-   * showTitle - initial title
-   *
-   * hides: count title
-   * (no previous step to hide)
-   * shows: intro title
-   *
-   */
-  function showTitle() {
-    g.selectAll(".count-title")
-      .transition()
-      .duration(0)
-      .attr("opacity", 0);
+        g.selectAll(".square")
+            .transition()
+            .duration(0)
+            .attr("opacity", 0);
 
-    g.selectAll(".openvis-title")
-      .transition()
-      .duration(600)
-      .attr("opacity", 1.0);
-  }
+        g.selectAll(".count-title")
+            .transition()
+            .duration(600)
+            .attr("opacity", 1.0);
+    }
 
-  /**
-   * showFillerTitle - filler counts
-   *
-   * hides: intro title
-   * hides: square grid
-   * shows: filler count title
-   *
-   */
-  function showFillerTitle() {
-    g.selectAll(".openvis-title")
-      .transition()
-      .duration(0)
-      .attr("opacity", 0);
+    function showFlow()
+        {
+            g.selectAll(".ref")
+                .attr("opacity", 0);
+        removePieChart();
+        flow("#vis");
+    }
 
-    g.selectAll(".square")
-      .transition()
-      .duration(0)
-      .attr("opacity", 0);
+    function showLineChart()
+    {
+        removePieChart();
+        d3.selectAll(".openvis-title")
+            .transition()
+            .duration(600)
+            .attr("opacity", 0);
+        
+        makeChart(svg, 19);
+            
+        }
 
-    g.selectAll(".count-title")
-      .transition()
-      .duration(600)
-      .attr("opacity", 1.0);
-  }
+        function removeLineChart()
+        {
+            d3.selectAll(".x.leoLine").remove()
+            d3.selectAll(".y.leoLine").remove()
+            d3.selectAll(".lineChart").remove()
+        }
+
+        function showPieChart(){
+            removeLineChart();
+            d3.selectAll(".hist")
+                .transition()
+                .duration(0)
+                .style("opacity", 0);
+
+            d3.select(".x.axis")
+                .transition().duration(500)
+                .style("opacity",0);
+
+            $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: 0px;"><div class="innerCont"/></div></div>')
+            Plot();
+            invertDivAndSvg();
+        }
+
+        function showUpdateChartCat1(){
+            updateDataCat1();
+        }
+
+        function showUpdateChartCat2(){
+            
+            d3.selectAll("flow")
+                .remove();
+
+            showPieChart();
+            updateDataCat2();
+
+        }
+
+        function invertDivAndSvg()
+        {
+            $('.osef:parent').each(function () {
+                $(this).insertBefore($(this).prev('svg'));
+            });
+        }
+
+        function removePieChart(){
+            $( ".osef" ).remove();
+        }
 
   /**
    * showGrid - square grid
@@ -435,61 +680,6 @@ var scrollVis = function() {
     g.select(".x.axis")
       .transition().duration(500)
       .style("opacity",0);
-  }
-
-  function showFlow()
-  {
-      removePieChart();
-      removeLineChart();
-      flow("#vis");
-  }
-
-    function showLineChart()
-  {
-      removePieChart();
-      d3.selectAll("flow")
-        .remove();
-
-      makeChart(svg, 19);
-  }
-
-  function removeLineChart()
-  {
-     d3.selectAll(".x.leoLine").remove()
-     d3.selectAll(".y.leoLine").remove()
-     d3.selectAll(".lineChart").remove()
-  }
-
-  function showPieChart(){
-    removeLineChart();
-    d3.selectAll(".hist")
-      .transition()
-      .duration(0)
-      .style("opacity", 0);
-
-    d3.select(".x.axis")
-      .transition().duration(500)
-      .style("opacity",0);
-
-    $('#vis').append('<div id="chart" class="osef" style="  position: relative;top: 0px;"><div class="innerCont"/></div></div>')
-    Plot();
-    invertDivAndSvg();
- }
-
-  function showUpdateChart(){
-    updateData();
-
-  }
-
-  function invertDivAndSvg()
-  {
-    $('.osef:parent').each(function () {
-    $(this).insertBefore($(this).prev('svg'));
-    });
-  }
-
-  function removePieChart(){
-    $( ".osef" ).remove();
   }
 
   /**
