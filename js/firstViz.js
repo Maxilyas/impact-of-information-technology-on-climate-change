@@ -76,5 +76,7 @@ function makeChart(svg)
             .ease("linear")
             .attr("stroke-dashoffset", 0)
     });
+
+    $('svg')
 }
 
