@@ -283,7 +283,7 @@ var scrollVis = function() {
     activateFunctions[7] = showCough;
     activateFunctions[8] = showHistAll;
     activateFunctions[9] = showPieChart;
-    activateFunctions[10] = showLineChart;
+    activateFunctions[10] = showLineChart;  
     activateFunctions[11] = showFlow;
     // updateFunctions are called while
     // in a particular section to update
@@ -604,13 +604,13 @@ var scrollVis = function() {
       flow("#vis");
   }
 
-  function showLineChart()
+    function showLineChart()
   {
       removePieChart();
       d3.selectAll("flow")
         .remove();
 
-      makeChart(svg);
+      makeChart(svg, 19);
   }
 
   function removeLineChart()
