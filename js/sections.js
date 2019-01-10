@@ -171,11 +171,7 @@ var scrollVis = function() {
           .attr("y", (height / 6) + (height / 10) )
           .text("Les references");
 	    
-	g.append("text")
-      .attr("class", "flow-intro")
-      .attr("x", width / 2)
-      .attr("y", height / 3)
-      .text("L'impact du numérique");
+
 
     g.selectAll(".openvis-title")
       .attr("opacity", 0);
