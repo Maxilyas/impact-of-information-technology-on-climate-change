@@ -169,9 +169,9 @@ var scrollVis = function() {
           .attr("class", "ref")
           .attr("x", width / 4)
           .attr("y", (height / 6) + (height / 10) )
-      
-	  
-	    
+
+
+
 
 
     g.selectAll(".openvis-title")
@@ -179,7 +179,7 @@ var scrollVis = function() {
 
     g.selectAll(".ref")
           .attr("opacity", 0);
-	
+
 	g.selectAll(".flow-intro")
           .attr("opacity", 0);
     // count filler word count title
@@ -363,7 +363,7 @@ var scrollVis = function() {
   $(this).width(width/2).height(height/2).appendTo(".imageS");
 });
 		invertImgAndSvg();
-		
+
     }
     /**
      * showFillerTitle - filler counts
@@ -389,7 +389,7 @@ var scrollVis = function() {
             .duration(600)
             .attr("opacity", 1.0);
     }
-	
+
 	function showFlowIntro(){
 		removeFlow();
 		removePieChart();
@@ -397,7 +397,7 @@ var scrollVis = function() {
             .transition()
             .duration(600)
             .attr("opacity", 1);
-	
+
 	}
 
     function showFlowP1()
@@ -411,24 +411,28 @@ var scrollVis = function() {
         removePieChart();
         removeFlow();
         flow_p1("#vis");
+        $('svg').css('margin-top', '5%');
     }
 
     function showFlowP2()
     {
         removeFlow();
         flow_p2("#vis");
+        $('svg').css('margin-top', '5%');
     }
 
     function showFlowP3()
     {
         removeFlow();
         flow_p3("#vis");
+        $('svg').css('margin-top', '5%');
     }
 
     function showFlowP4()
     {
         removeFlow();
         flow_p4("#vis");
+        $('svg').css('margin-top', '5%');
     }
 
     function showFlowP5()
@@ -439,7 +443,9 @@ var scrollVis = function() {
             .duration(100)
             .attr("opacity", 0);
         removeFlow();
+//        $('#vis').append('<div id="chart" class="osef" style="position: relative;top: 20%;"><div class="innerCont"/></div></div>')
         flow_p5("#vis");
+        $('svg').css('margin-top', '5%');
     }
 
     function showLineChart()
@@ -512,7 +518,7 @@ var scrollVis = function() {
 			$(this).insertBefore($(this).prev('svg'));
 		});
 	}
-	
+
 	function invertImgAndSvg()
 	{
 		$('.imageS').each(function () {
@@ -523,7 +529,7 @@ var scrollVis = function() {
 	function removePieChart(){
 		$( ".osef" ).remove();
 	}
-	
+
 	function removeImage(){
 		$( ".imageS" ).remove();
 	}
