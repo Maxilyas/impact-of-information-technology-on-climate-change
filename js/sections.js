@@ -426,6 +426,10 @@ var scrollVis = function() {
 
     function showFlowP5()
     {
+		g.selectAll(".ref")
+            .transition()
+            .duration(100)
+            .attr("opacity", 0);
         removeFlow();
         flow_p5("#vis");
     }
