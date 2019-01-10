@@ -169,7 +169,8 @@ var scrollVis = function() {
           .attr("class", "ref")
           .attr("x", width / 4)
           .attr("y", (height / 6) + (height / 10) )
-          .text("Les references");
+      
+	  
 	    
 
 
@@ -357,6 +358,12 @@ var scrollVis = function() {
             .transition()
             .duration(600)
             .attr("opacity", 1);
+	$('#vis').append('<div id="image1" class="imageS" style="  position: relative;top: 30%;left:30%"></div>')
+		$('<img src="'+ "https://i1.wp.com/theshiftproject.org/wp-content/uploads/2018/02/Version-plus-carrée-Logo.png" +'">').load(function() {
+  $(this).width(width/2).height(height/2).appendTo(".imageS");
+});
+		invertImgAndSvg();
+		
     }
     /**
      * showFillerTitle - filler counts
@@ -426,6 +433,7 @@ var scrollVis = function() {
 
     function showFlowP5()
     {
+		removeImage()
 		g.selectAll(".ref")
             .transition()
             .duration(100)
@@ -504,9 +512,20 @@ var scrollVis = function() {
 			$(this).insertBefore($(this).prev('svg'));
 		});
 	}
+	
+	function invertImgAndSvg()
+	{
+		$('.imageS').each(function () {
+			$(this).insertBefore($(this).prev('svg'));
+		});
+	}
 
 	function removePieChart(){
 		$( ".osef" ).remove();
+	}
+	
+	function removeImage(){
+		$( ".imageS" ).remove();
 	}
 
   /**
