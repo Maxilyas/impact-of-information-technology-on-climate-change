@@ -42,7 +42,25 @@ function makeChart(svg)
 	    .attr("d", valueline(data))
             .attr("transform", "translate(80,0)")
             .style("opacity", "0");
-
+  
+  // text label for the x axis
+  svg.append("text")
+	  .attr("class","xLegend")
+      .attr("transform",
+            "translate(" + (width/2 + 60) + " ," + 
+                           (height + margin.top + 50) + ")")
+      .style("text-anchor", "middle")
+      .text("Date");
+	  
+	  // text label for the y axis
+  svg.append("text")
+	  .attr("class","yLegend")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 0 - margin.left + 5)
+      .attr("x",0 - (height / 2) -30)
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("TWh");   
 	// Add the X Axis
 	var xAxisL = svg.append("g")
 	    .attr("class", "x leoLine")

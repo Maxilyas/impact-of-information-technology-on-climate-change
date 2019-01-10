@@ -452,6 +452,8 @@ var scrollVis = function() {
 		d3.selectAll(".x.leoLine").remove()
 		d3.selectAll(".y.leoLine").remove()
 		d3.selectAll(".lineChart").remove()
+		d3.selectAll(".xLegend").remove()
+		d3.selectAll(".yLegend").remove()
 	}
 
 	function showPieChart(){
