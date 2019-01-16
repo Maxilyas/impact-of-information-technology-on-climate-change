@@ -2,7 +2,7 @@
 body { background-color:#f1faee }
 
 .container {
-    width: 50%;
+    width: 90%;
 }
 
 #sections {
@@ -74,12 +74,6 @@ body { background-color:#f1faee }
 .highlight {
     fill: #008080;
     font-weight: bold;
-}
-
-.cough-arrow {
-    stroke: #000;
-    stroke-width: 4px;
-
 }
 
 /* Arrow */           
@@ -392,4 +386,20 @@ html,body {
     transition:all .1s ease;
     color:#f0f0f0;
   }
+}
+
+
+/* col */
+
+#bloc1
+{
+    width:50%;
+    height:100%;
+    float:left;
+}
+#bloc2
+{
+    width:50%;
+    height:100%;
+    float:right;
 }
