@@ -350,6 +350,8 @@ var scrollVis = function() {
     function removeFlow() {
         d3.selectAll("flow")
             .remove();
+            d3.selectAll("g")
+                .remove();
     }
 
     function showRef() {
@@ -402,6 +404,7 @@ var scrollVis = function() {
 
     function showFlowP1()
     {
+        removeLineChart();
         g.selectAll(".ref")
             .attr("opacity", 0);
 		d3.selectAll(".flow-intro")
