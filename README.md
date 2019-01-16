@@ -33,7 +33,13 @@ Cette équivalence dépend très fortement du pays où le kWh a été consommé.
 
 Pour la suppression des mails, on estime que la conservation de 1go de données dans un datacenter consomme 32kWh par an [source](https://en.reset.org/blog/save-planet-clean-your-inbox-12242015). On considère que le mail moyen pèse 200Ko, basé sur la moyenne de mes 6000 mails ... car nous n'avons pas trouvé de données plus précises. On peut donc calculer le poids de données économisées si chaque personne de l'OCDE supprime 100 mails tous les ans = 1,3 milliards * 200ko. A partir de ce poids on peut ensuite calculer l'économie en kWh équivalente, puis l'émission de CO2 équivalente.
 
-Pour le spam, on estime que 74800 milliards de mails sont envoyés tous les ans. [source](https://www.templafy.com/blog/how-many-emails-are-sent-every-day-top-email-statistics-your-business-needs-to-know/). Nous considérons que 80% du mail sont du spam, mais les sources indiquent 50% à 90% (avec du recul c'est probablement plutôt 50%). [source](https://www.arobase.org/actu/chiffres-email.htm). On considère aussi que l'envoi par mail d'1Mo de données
+Pour le spam, on estime que 74800 milliards de mails sont envoyés tous les ans. [source](https://www.templafy.com/blog/how-many-emails-are-sent-every-day-top-email-statistics-your-business-needs-to-know/). On considère que 50% des emails envoyés sont du spam. Selon le rapport de l'ADEME, l'envoi d'un mail moyen correspond à l'émission de 3g de co2 [source](https://www.bfmtv.com/planete/les-spams-en-diminution-dans-nos-boites-mail-902851.html).
+
+Pour l'obsolescence, selon le Shift project, la durée de vie moyenne d'un smartphone est de 2.5 ans. En l'augmentant à 3.5 ans on réduit l'émission d'énergie due à la production des smartphones de 40%, ce qui représente 640 millions de smartphones produits en moins chaque année, à 70kWh le smartphone [source](https://spectrum.ieee.org/energy/environment/your-phone-costs-energyeven-before-you-turn-it-on).
+
+Pour la veille, selon l'ADEME un foyer moyen en France consomme 50W en permanence d'appareils en veille. Nous avons décidé d'extrapoler cette valeur pour l'OCDE pour correspondre à la même échelle que tous les chiffres précédents. Nous savons que l'OCDE correspond à 1.3 milliards de personnes, avec 2.4 personnes par foyer en moyenne, ce qui nous donne le nombre de foyers. On peut ensuite transformées les watts annuels en kWh par foyer, et multiplier par le nombre de foyers.
+
+Pour la consommation de la vidéo, 
 
 
 
