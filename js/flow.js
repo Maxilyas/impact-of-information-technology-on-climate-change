@@ -1,7 +1,7 @@
 //The data for our lines
  var spam = [ { "x": 1,   "y": 0, value: 114 , opacity: "1", color: " green"},
-{ "x": 20,   "y": 20, value: 114 , opacity: "1", color: " green"},
-{ "x": 20,   "y": 200, value: 114 , opacity: "1", color: " green"}];
+{ "x": 19,   "y": 20, value: 114 , opacity: "1", color: " green"},
+{ "x": 18,   "y": 200, value: 114 , opacity: "1", color: " green"}];
 
 
 var obsolescence = [
