@@ -347,11 +347,11 @@ var scrollVis = function() {
             .attr("opacity", 1.0);
     }
 
-    function removeFlow() {
-        d3.selectAll("flow")
-            .remove();
-            d3.selectAll("g")
-                .remove();
+    function removeFlow()
+    {
+        d3.selectAll("flow").remove();
+        d3.selectAll("g").selectAll("path").remove();
+
     }
 
     function showRef() {
