@@ -354,17 +354,10 @@ var scrollVis = function() {
     }
 
     function showRef() {
-        removeFlow();
         g.selectAll(".ref")
             .transition()
             .duration(600)
             .attr("opacity", 1);
-	$('#vis').append('<div id="image1" class="imageS" style="  position: relative;top: 30%;left:30%"></div>')
-		$('<img src="'+ "https://i1.wp.com/theshiftproject.org/wp-content/uploads/2018/02/Version-plus-carrée-Logo.png" +'">').load(function() {
-  $(this).width(width/2).height(height/2).appendTo(".imageS");
-});
-		invertImgAndSvg();
-
     }
     /**
      * showFillerTitle - filler counts
