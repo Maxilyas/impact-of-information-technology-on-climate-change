@@ -351,7 +351,6 @@ var scrollVis = function() {
     {
         d3.selectAll("flow").remove();
         d3.selectAll("g").selectAll("path").remove();
-
     }
 
     function showRef() {
