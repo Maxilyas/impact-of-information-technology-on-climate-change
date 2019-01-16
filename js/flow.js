@@ -11,9 +11,9 @@ var obsolescence = [
 
 
 var mail = [
-{ "x": 30,   "y": 0, value: 0.416 , opacity: "1", color: "#31c120"},
-{ "x": 27.2,   "y": 20, value: 0.416 , opacity: "1", color: "#31c120"},
-{ "x": 27.2,   "y": 200, value: 0.416 , opacity: "1", color: "#31c120"}];
+{ "x": 30,   "y": 0, value: 0.416 , opacity: "1", color: "red"},
+{ "x": 27.2,   "y": 20, value: 0.416 , opacity: "1", color: "red"},
+{ "x": 27.2,   "y": 200, value: 0.416 , opacity: "1", color: "red"}];
 
 
 var veille = [
@@ -23,9 +23,9 @@ var veille = [
 
 
 var streaming = [
-{ "x": 80,   "y": 0, value: 200 , opacity: "0.2", color: "#C70039"},
-{ "x": 48.8,   "y": 22, value: 200 , opacity: "0.2", color: "#C70039"},
-{ "x": 48.8,   "y": 200, value: 200 , opacity: "0.2", color: "#C70039"}];
+{ "x": 80,   "y": 0, value: 200 , opacity: "1", color: "#960018"},
+{ "x": 49.5,   "y": 22, value: 200 , opacity: "1", color: "#960018"},
+{ "x": 50,   "y": 200, value: 200 , opacity: "1", color: "#960018"}];
 
 
 
