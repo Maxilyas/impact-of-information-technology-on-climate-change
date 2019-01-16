@@ -41,7 +41,19 @@ Pour la veille, selon l'ADEME un foyer moyen en France consomme 50W en permanenc
 
 Pour la consommation de la vidéo, nous estimons que baisser d'un cran la qualité vidéo sur youtube réduit la consommation de 100mW ([source](https://www.researchgate.net/profile/Mohammad_Hoque10/publication/267394699_Energy_Consumption_Anatomy_of_Live_Video_Streaming_from_a_Smartphone/links/544edf050cf26dda08901d22/Energy-Consumption-Anatomy-of-Live-Video-Streaming-from-a-Smartphone.pdf?origin=publication_detail)). On multiplie ensuite avec le temps de vidéo visionné sur Youtube sur 1 an ([source](https://www.webrankinfo.com/dossiers/youtube/chiffres-statistiques)).
 
+#### Equivalences :
 
+1 mail = 6Wh
+1 café = 12Wh ([source](http://stockage.univ-valenciennes.fr/EcoPEM/BoiteB/co/III_d.html))
+1 heure d'ampoule = 60Wh (pour une ampoule de 60W)
+1 km en voiture = 280Wh (pour une voiture qui emet 140g/km)
+1 km en avion par passager = 720Wh (pour un avion qui emet 360g/km/passager)
+
+## Références pour le code :
+
+Les piechart sont grandement inspirés de : [https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745](https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745)
+
+Le fonctionnement du scroll : [http://vallandingham.me/scroller.html](http://vallandingham.me/scroller.html)
 
 
 
