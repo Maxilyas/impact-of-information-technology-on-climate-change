@@ -312,7 +312,8 @@ var scrollVis = function() {
         activateFunctions[9] = showFlowP3;
         activateFunctions[10] = showFlowP4;
         activateFunctions[11] = showFlowP5;
-        activateFunctions[12] = showRef;
+		activateFunctions[12] = showBarChart;
+        activateFunctions[13] = showRef;
 
         // updateFunctions are called while
         // in a particular section to update
@@ -370,6 +371,7 @@ var scrollVis = function() {
     }
 
     function showRef() {
+		removeLineChart()
         g.selectAll(".ref")
             .transition()
             .duration(600)
@@ -403,6 +405,7 @@ var scrollVis = function() {
 	function showFlowIntro(){
 		removeFlow();
 		removePieChart();
+		removeLineChart()
 		d3.selectAll(".flow-intro")
             .transition()
             .duration(600)
@@ -435,6 +438,7 @@ var scrollVis = function() {
 
     function showFlowP2()
     {
+		removeLineChart()
         removeFlow();
         flow_p2("#vis");
         $('svg').css('margin-top', '5%');
@@ -442,6 +446,7 @@ var scrollVis = function() {
 
     function showFlowP3()
     {
+		removeLineChart()
         removeFlow();
         flow_p3("#vis");
         $('svg').css('margin-top', '5%');
@@ -449,6 +454,7 @@ var scrollVis = function() {
 
     function showFlowP4()
     {
+		removeLineChart()
         removeFlow();
         flow_p4("#vis");
         $('svg').css('margin-top', '5%');
@@ -456,6 +462,8 @@ var scrollVis = function() {
 
     function showFlowP5()
     {
+		removeLineChart()
+		removePieChart();
 		removeImage()
 		g.selectAll(".ref")
             .transition()
@@ -534,6 +542,19 @@ var scrollVis = function() {
 	    g.selectAll(".sub-titleConf")
 	       .attr("opacity",0);
 
+	}
+	
+	function showBarChart(){
+		removeImage()
+		removePieChart()
+		g.selectAll(".ref")
+            .transition()
+            .duration(100)
+            .attr("opacity", 0);
+        removeFlow();
+		$('#vis').append('<div id="chartFin" class="osef" style="  position: relative;top: 20%;"><form><label><input type="radio" name="mode" value="grouped"> Grouped</label><label><input type="radio" name="mode" value="stacked" checked> Stacked</label></form></div>')
+		doBarChart();
+	    invertDivAndSvg();
 	}
 
 	function invertDivAndSvg()
