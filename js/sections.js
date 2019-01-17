@@ -412,7 +412,6 @@ var scrollVis = function() {
        	     .attr("opacity",1);
 	    g.selectAll(".sub-titleConf")
        .attr("opacity",1);
-		flow_p1_intro("#vis");
 	}
 
     function showFlowP1()
