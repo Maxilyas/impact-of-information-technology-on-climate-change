@@ -57,6 +57,16 @@ body { background-color:#f1faee }
     text-anchor: middle;
 	font-variant: small-caps
 }
+#vis .titleConf {
+    font-size:50px;
+    text-anchor: middle;
+	font-variant: small-caps
+}
+#vis .sub-titleConf {
+    font-size:50px;
+    text-anchor: middle;
+	font-variant: small-caps
+}
 
 #vis .sub-title {
     font-size:50px;

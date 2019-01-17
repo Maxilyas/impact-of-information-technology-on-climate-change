@@ -170,10 +170,24 @@ var scrollVis = function() {
           .attr("x", width / 4)
           .attr("y", (height / 6) + (height / 10) )
 
+     g.append("text")
+        .attr("class","titleConf")
+        .attr("x", width / 2)
+        .attr("y", height / 3)
+        .text("Confluence");
 
 
+     g.append("text")
+        .attr("class","sub-titleConf")
+        .attr("x", width / 2)
+        .attr("y", (height / 3) + (height / 5))
+        .text("des économies faciles");
 
 
+    g.selectAll(".titleConf")
+       .attr("opacity",0);
+    g.selectAll(".sub-titleConf")
+       .attr("opacity",0);
     g.selectAll(".openvis-title")
       .attr("opacity", 0);
 
@@ -391,11 +405,20 @@ var scrollVis = function() {
             .transition()
             .duration(600)
             .attr("opacity", 1);
+	
+   	 g.selectAll(".titleConf")
+       	     .attr("opacity",1);
+	    g.selectAll(".sub-titleConf")
+       .attr("opacity",1);
 
 	}
 
     function showFlowP1()
     {
+	    g.selectAll(".sub-titleConf")
+       .attr("opacity",0);
+    	g.selectAll(".titleConf")
+       	    .attr("opacity",0);
         removeLineChart();
         g.selectAll(".ref")
             .attr("opacity", 0);
@@ -504,6 +527,11 @@ var scrollVis = function() {
             .attr("opacity", 0);
 		showPieChart();
 		updateDataCat3();
+		
+	    g.selectAll(".titleConf")
+	       .attr("opacity",0);
+	    g.selectAll(".sub-titleConf")
+	       .attr("opacity",0);
 
 	}
 
