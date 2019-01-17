@@ -365,6 +365,7 @@ var scrollVis = function() {
     {
         d3.selectAll("flow").remove();
         d3.selectAll("g").selectAll("path").remove();
+        d3.selectAll("g").selectAll("image").remove();
     }
 
     function showRef() {
@@ -405,7 +406,7 @@ var scrollVis = function() {
             .transition()
             .duration(600)
             .attr("opacity", 1);
-	
+
    	 g.selectAll(".titleConf")
        	     .attr("opacity",1);
 	    g.selectAll(".sub-titleConf")
@@ -527,7 +528,7 @@ var scrollVis = function() {
             .attr("opacity", 0);
 		showPieChart();
 		updateDataCat3();
-		
+
 	    g.selectAll(".titleConf")
 	       .attr("opacity",0);
 	    g.selectAll(".sub-titleConf")

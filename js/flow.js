@@ -123,6 +123,31 @@ lineGraph.attr("stroke-dasharray",  totalLength + " " + totalLength)
           .duration(2000)
           .ease("linear")
           .attr("stroke-dashoffset", 0);
+
+
+
+svgContainer.append("g")
+    .append("svg:image")
+    .attr('x', 285)
+    .attr('y', 100)
+    .attr('width', 40)
+    .attr('height', 40)
+    .attr("xlink:href", "https://image.flaticon.com/icons/svg/138/138690.svg")
+    .attr("opacity",1);
+
+
+/*
+          //Add the SVG Text Element to the svgContainer
+          var text = svgContainer.select("g")
+                                 .append("text");
+          //Add SVG Text Element Attributes
+          var textLabels = text
+                           .attr("x", width/4)
+                           .attr("y", height-100)
+                           .text( "consommation économisés : 416 000 tonnes de co2 ")
+                           .attr("font-family", "sans-serif")
+                           .attr("font-size", "20px");
+//                           .attr("fill", "red");*/
 }
 
 
@@ -221,6 +246,25 @@ lineGraph2.attr("stroke-dasharray",  totalLength + " " + totalLength)
           .duration(2000)
           .ease("linear")
           .attr("stroke-dashoffset", 0);
+
+
+  svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 285)
+        .attr('y', 100)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/138/138690.svg")
+        .attr("opacity",1)
+
+    svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 200)
+        .attr('y', 130)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/733/733492.svg")
+        .attr("opacity",1)
 }
 
 
@@ -319,6 +363,31 @@ lineGraph3.attr("stroke-dasharray",  totalLength + " " + totalLength)
           .duration(2000)
           .ease("linear")
           .attr("stroke-dashoffset", 0);
+
+  svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 285)
+        .attr('y', 100)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/138/138690.svg")
+        .attr("opacity",1)
+    svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 200)
+        .attr('y', 130)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/733/733492.svg")
+        .attr("opacity",1)
+svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 45)
+        .attr('y', 170)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/1334/1334579.svg")
+        .attr("opacity",1)
 }
 
 function flow_p4(scroll)
@@ -415,6 +484,39 @@ lineGraph4.attr("stroke-dasharray",  totalLength + " " + totalLength)
           .duration(2000)
           .ease("linear")
           .attr("stroke-dashoffset", 0);
+
+    svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 285)
+        .attr('y', 100)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/138/138690.svg")
+        .attr("opacity",1)
+    svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 200)
+        .attr('y', 130)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/733/733492.svg")
+        .attr("opacity",1)
+    svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 45)
+        .attr('y', 170)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/1334/1334579.svg")
+        .attr("opacity",1)
+    svgContainer.append("g")
+        .append("svg:image")
+        .attr('x', 410)
+        .attr('y', 200)
+        .attr('width', 40)
+        .attr('height', 40)
+        .attr("xlink:href", "https://image.flaticon.com/icons/svg/599/599510.svg")
+        .attr("opacity",1)
 }
 
 
@@ -512,4 +614,46 @@ lineGraph5.attr("stroke-dasharray",  totalLength + " " + totalLength)
           .duration(2000)
           .ease("linear")
           .attr("stroke-dashoffset", 0);
+
+
+  svgContainer.append("g")
+      .append("svg:image")
+      .attr('x', 285)
+      .attr('y', 100)
+      .attr('width', 40)
+      .attr('height', 40)
+      .attr("xlink:href", "https://image.flaticon.com/icons/svg/138/138690.svg")
+      .attr("opacity",1)
+  svgContainer.append("g")
+      .append("svg:image")
+      .attr('x', 200)
+      .attr('y', 130)
+      .attr('width', 40)
+      .attr('height', 40)
+      .attr("xlink:href", "https://image.flaticon.com/icons/svg/733/733492.svg")
+      .attr("opacity",1)
+  svgContainer.append("g")
+      .append("svg:image")
+      .attr('x', 45)
+      .attr('y', 170)
+      .attr('width', 40)
+      .attr('height', 40)
+      .attr("xlink:href", "https://image.flaticon.com/icons/svg/1334/1334579.svg")
+      .attr("opacity",1)
+  svgContainer.append("g")
+      .append("svg:image")
+      .attr('x', 410)
+      .attr('y', 200)
+      .attr('width', 40)
+      .attr('height', 40)
+      .attr("xlink:href", "https://image.flaticon.com/icons/svg/599/599510.svg")
+      .attr("opacity",1)
+  svgContainer.append("g")
+      .append("svg:image")
+      .attr('x', 550)
+      .attr('y', 200)
+      .attr('width', 40)
+      .attr('height', 40)
+      .attr("xlink:href", "https://image.flaticon.com/icons/svg/1384/1384868.svg")
+      .attr("opacity",1)
 }
