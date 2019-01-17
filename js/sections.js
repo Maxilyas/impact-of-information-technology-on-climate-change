@@ -366,6 +366,7 @@ var scrollVis = function() {
         d3.selectAll("flow").remove();
         d3.selectAll("g").selectAll("path").remove();
         d3.selectAll("g").selectAll("image").remove();
+		d3.selectAll(".legend").remove();
     }
 
     function showRef() {
@@ -411,7 +412,7 @@ var scrollVis = function() {
        	     .attr("opacity",1);
 	    g.selectAll(".sub-titleConf")
        .attr("opacity",1);
-
+		flow_p1_intro("#vis");
 	}
 
     function showFlowP1()

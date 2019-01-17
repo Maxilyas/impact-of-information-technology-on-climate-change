@@ -74,6 +74,11 @@ body { background-color:#f1faee }
 	font-variant: small-caps
 }
 
+.legend rect {
+  fill:white;
+  stroke:black;
+  opacity:0.8;}
+
 .axis path,
 .axis line {
     fill: none;
