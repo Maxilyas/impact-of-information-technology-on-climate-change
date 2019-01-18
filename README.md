@@ -1,4 +1,5 @@
-# L'impact du numérique sur le climat / Impact of information technology on energy consumption
+# L'impact du numérique sur le climat  
+# Impact of information technology on energy consumption
 
 Gomès Antoine, Lafiosca Léo, Touati Gaïs, Jourdan Luca
 ## Description (EN)
