@@ -1,5 +1,5 @@
 # L'impact du numérique sur le climat
-
+Gomès Antoine, Lafiosca Léo, Touati Gaïs, Jourdan Luca
 ## Description (EN)
 This project has been done in the course [Data Visualization](https://lyondataviz.github.io/teaching/lyon1-m2/2018/) of the [Master Artificial Intelligence](http://master-info.univ-lyon1.fr/IA/) at [University Claude Bernard Lyon 1](https://www.univ-lyon1.fr/).
 
