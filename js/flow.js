@@ -142,7 +142,7 @@ svgContainer.append("g")
 
 legend = svgContainer.append("g")
     .attr("class","legend")
-    .attr("transform","translate(30,350)")
+    .attr("transform","translate(30,400)")
     .style("font-size","12px")
     .call(d3.legend)
 
@@ -280,7 +280,7 @@ lineGraph2.attr("stroke-dasharray",  totalLength + " " + totalLength)
 
 	legend = svgContainer.append("g")
     .attr("class","legend")
-    .attr("transform","translate(30,350)")
+    .attr("transform","translate(30,400)")
     .style("font-size","12px")
     .call(d3.legend)
 }
@@ -413,7 +413,7 @@ lineGraph3.attr("stroke-dasharray",  totalLength + " " + totalLength)
 
 legend = svgContainer.append("g")
     .attr("class","legend")
-    .attr("transform","translate(30,350)")
+    .attr("transform","translate(30,400)")
     .style("font-size","12px")
     .call(d3.legend)
 		}
@@ -554,7 +554,7 @@ lineGraph4.attr("stroke-dasharray",  totalLength + " " + totalLength)
 		
 legend = svgContainer.append("g")
     .attr("class","legend")
-    .attr("transform","translate(30,350)")
+    .attr("transform","translate(30,400)")
     .style("font-size","12px")
     .call(d3.legend)
 		}
@@ -705,7 +705,7 @@ lineGraph5.attr("stroke-dasharray",  totalLength + " " + totalLength)
 
 	  legend = svgContainer.append("g")
     .attr("class","legend")
-    .attr("transform","translate(30,350)")
+    .attr("transform","translate(30,400)")
     .style("font-size","12px")
     .call(d3.legend)
 	}
