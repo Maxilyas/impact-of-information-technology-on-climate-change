@@ -56,9 +56,9 @@ Pour la consommation de la vidéo, nous estimons que baisser d'un cran la qualit
 
 ## Références pour le code :
 
-Les piechart sont grandement inspirés de : [https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745](https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745)
-Le bar chart est inspiré de : [https://jsfiddle.net/9y2g65qc/](https://jsfiddle.net/9y2g65qc/)
-Le fonctionnement du scroll : [http://vallandingham.me/scroller.html](http://vallandingham.me/scroller.html)
+Les piechart sont grandement inspirés de : [https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745](https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745)  
+Le bar chart est inspiré de : [https://jsfiddle.net/9y2g65qc/](https://jsfiddle.net/9y2g65qc/)  
+Le fonctionnement du scroll : [http://vallandingham.me/scroller.html](http://vallandingham.me/scroller.html)  
 
 
 
