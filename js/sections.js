@@ -371,7 +371,6 @@ var scrollVis = function() {
     }
 
     function showRef() {
-		removeLineChart()
         g.selectAll(".ref")
             .transition()
             .duration(600)

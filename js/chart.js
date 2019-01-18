@@ -83,8 +83,8 @@ function renderStackedBarChart(inputData, chartFin, colorScheme) {
 	svg.append("text")
 	  .attr("class","yLegend")
       .attr("transform",
-            "translate(" + (width/10 -25) + " ," + 
-                           (height - 385 ) + ")")
+            "translate(" + (29) + " ," + 
+                           (90) + ")")
       .style("text-anchor", "middle")
       .text("Mt CO2");
 
@@ -150,7 +150,7 @@ function renderStackedBarChart(inputData, chartFin, colorScheme) {
 	legendClassArray = legendClassArray.reverse();
 
 	legend.append("rect")
-	.attr("x", width -10)
+	.attr("x", width -70)
 	.attr("y", 90)
 	.attr("width", 18)
 	.attr("height", 18)
@@ -207,7 +207,7 @@ function renderStackedBarChart(inputData, chartFin, colorScheme) {
 	});
 
 	legend.append("text")
-	.attr("x", width - 25 )
+	.attr("x", width - 75 )
 	.attr("y", 98)
 	.attr("dy", ".35em")
 	.style("text-anchor", "end")
