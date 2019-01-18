@@ -1,31 +1,31 @@
 //The data for our lines
- var spam = [ { "x": 1,   "y": 0, value: 114 , opacity: "1", color: " green",name:"Economie Spam"},
-{ "x": 19,   "y": 20, value: 114 , opacity: "1", color: " green",name:"Economie Spam"},
-{ "x": 18,   "y": 200, value: 114 , opacity: "1", color: " green",name:"Economie Spam"}];
+ var spam = [ { "x": 1,   "y": 0, value: 114 , opacity: "1", color: " green",name:"Limiter les spams"},
+{ "x": 19,   "y": 20, value: 114 , opacity: "1", color: " green",name:"Limiter les spams"},
+{ "x": 18,   "y": 200, value: 114 , opacity: "1", color: " green",name:"Limiter les spams"}];
 
 
 var obsolescence = [
-{ "x": 26,   "y": 0, value: 22 , opacity: "1", color: "#e68c40",name:"Economie Obsolescence"},
-{ "x": 26,   "y": 20, value: 22 , opacity: "1", color: "#e68c40",name:"Economie Obsolescence"},
-{ "x": 26,   "y": 200, value: 22 , opacity: "1", color: "#e68c40",name:"Economie Obsolescence"}];
+{ "x": 26,   "y": 0, value: 22 , opacity: "1", color: "#e68c40",name:"Lutte contre l'obsolescence"},
+{ "x": 26,   "y": 20, value: 22 , opacity: "1", color: "#e68c40",name:"Lutte contre l'obsolescence"},
+{ "x": 26,   "y": 200, value: 22 , opacity: "1", color: "#e68c40",name:"Lutte contre l'obsolescence"}];
 
 
 var mail = [
-{ "x": 30,   "y": 0, value: 0.416 , opacity: "1", color: "#9400D3",name:"Economie Mail"},
-{ "x": 27.2,   "y": 20, value: 0.416 , opacity: "1", color: "#9400D3",name:"Economie Mail"},
-{ "x": 27.2,   "y": 200, value: 0.416 , opacity: "1", color: "#9400D3",name:"Economie Mail"}];
+{ "x": 30,   "y": 0, value: 0.416 , opacity: "1", color: "#9400D3",name:"Suppression des mails"},
+{ "x": 27.2,   "y": 20, value: 0.416 , opacity: "1", color: "#9400D3",name:"Suppression des mails"},
+{ "x": 27.2,   "y": 200, value: 0.416 , opacity: "1", color: "#9400D3",name:"Suppression des mails"}];
 
 
 var veille = [
-{ "x": 50,   "y": 0, value: 113.5 , opacity: "0.2", color: "#336eff",name:"Economie Veille"},
-{ "x": 33.7,   "y": 20, value: 113.5 , opacity: "0.2", color: "#336eff",name:"Economie Veille"},
-{ "x": 33,   "y": 200, value: 113.5 , opacity: "0.2", color: "#336eff",name:"Economie Veille"}];
+{ "x": 50,   "y": 0, value: 113.5 , opacity: "0.2", color: "#336eff",name:"Disparition du mode veille"},
+{ "x": 33.7,   "y": 20, value: 113.5 , opacity: "0.2", color: "#336eff",name:"Disparition du mode veille"},
+{ "x": 33,   "y": 200, value: 113.5 , opacity: "0.2", color: "#336eff",name:"Disparition du mode veille"}];
 
 
 var streaming = [
-{ "x": 80,   "y": 0, value: 200 , opacity: "1", color: "#960018",name:"Economie Streaming"},
-{ "x": 49.5,   "y": 22, value: 200 , opacity: "1", color: "#960018",name:"Economie Streaming"},
-{ "x": 50,   "y": 200, value: 200 , opacity: "1", color: "#960018",name:"Economie Streaming"}];
+{ "x": 80,   "y": 0, value: 200 , opacity: "1", color: "#960018",name:"Réduire la qualité du Streaming"},
+{ "x": 49.5,   "y": 22, value: 200 , opacity: "1", color: "#960018",name:"Réduire la qualité du Streaming"},
+{ "x": 50,   "y": 200, value: 200 , opacity: "1", color: "#960018",name:"Réduire la qualité du Streaming"}];
 
 //var maxCapacite = [
 //{ "x": 36.2,   "y": 25, value: 449.916 , opacity: "1", color: "#606060",name:"Economie Total"},
