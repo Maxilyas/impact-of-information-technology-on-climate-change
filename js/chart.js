@@ -19,7 +19,7 @@ function renderStackedBarChart(inputData, chartFin, colorScheme) {
 	.scale(x)
 	.orient("bottom")
 	.tickFormat(function(d) {
-		return ("Consommation Numérique Total");
+		return ("Consommation Numérique Totale");
 	});
 
 	var yAxis = d3.svg.axis()
