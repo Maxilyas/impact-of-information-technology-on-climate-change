@@ -321,7 +321,7 @@ var scrollVis = function() {
         // Most sections do not need to be updated
         // for all scrolling and so are set to
         // no-op functions.
-        for(var i = 0; i < 13; i++) {
+        for(var i = 0; i < 14; i++) {
             updateFunctions[i] = function() {};
         }
     };

@@ -6,9 +6,10 @@ var n = 4, // number of layers
     yGroupMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y; }); }),
     yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
 
-var margin = {top: 40, right: 10, bottom: 20, left: 10},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 0, right: 10, bottom: 40, left: 20},
+    width = 600 - margin.left - margin.right,
+    height = 520 - margin.top - margin.bottom;
+var id = 0;
 
 var x = d3.scale.ordinal()
     .domain(d3.range(m))
@@ -60,12 +61,12 @@ svg.append("g")
 
 d3.selectAll("input").on("change", change);
 
-var timeout = setTimeout(function() {
-  d3.select("input[value=\"grouped\"]").property("checked", true).each(change);
-}, 2000);
+//var timeout = setTimeout(function() {
+//  d3.select("input[value=\"grouped\"]").property("checked", true).each(change);
+//}, 2000);
 
 function change() {
-  clearTimeout(timeout);
+ //clearTimeout(timeout);
   if (this.value === "grouped") transitionGrouped();
   else transitionStacked();
 }
@@ -114,4 +115,16 @@ function bumpLayer(n, o) {
   for (i = 0; i < 5; ++i) bump(a);
   return a.map(function(d, i) { return {x: i, y: Math.max(0, d)}; });
 }
+
+//function change(id){
+//if (id==1){
+//transitionGrouped();
+//}else
+//{
+//transitionStacked();
+//}
+//}
+ //return {
+  //      change: change
+   // };
 }
