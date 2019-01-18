@@ -1,8 +1,13 @@
 # L'impact du numérique sur le climat
 
-Ce projet a été effectué dans le cadre de l'UE "Visualisation Interactive de Données" du Master IA de l'Université Lyon 1.
+## Description (EN)
+This project has been done in the course [Data Visualization](https://lyondataviz.github.io/teaching/lyon1-m2/2018/) of the [Master Artificial Intelligence](http://master-info.univ-lyon1.fr/IA/) at [University Claude Bernard Lyon 1](https://www.univ-lyon1.fr/).
 
-## Objectifs
+The objective is to do an overview of the energy consumption of the digital industry. Once the issues and participants are identified, we propose ways to achieve more socially responsible digital consumption.
+
+## Objectifs (FR)
+Ce projet a été effectué dans le cadre de l'UE "[Visualisation Interactive de Données](https://lyondataviz.github.io/teaching/lyon1-m2/2018/)" du [Master IA](http://master-info.univ-lyon1.fr/IA/) de [l'Université Lyon 1](https://www.univ-lyon1.fr/).
+
 L'objectif est de faire un apperçu de la consommation d'énergie de l'industrie du numérique. Une fois les enjeux et les participants cernés, nous proposons des pistes pour avoir une consommation numérique plus responsable à l'échelle de la société.
 
 ## Visualisation
@@ -52,7 +57,7 @@ Pour la consommation de la vidéo, nous estimons que baisser d'un cran la qualit
 ## Références pour le code :
 
 Les piechart sont grandement inspirés de : [https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745](https://gist.github.com/cnaithani/1ceda79527a698950d60628ed935d745)
-
+Le bar chart est inspiré de : [https://jsfiddle.net/9y2g65qc/](https://jsfiddle.net/9y2g65qc/)
 Le fonctionnement du scroll : [http://vallandingham.me/scroller.html](http://vallandingham.me/scroller.html)
 
 
