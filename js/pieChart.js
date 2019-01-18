@@ -157,7 +157,7 @@ function BuildPie(id, chartData, options, level) {
 
     var leg = legend.append("rect");
 
-    leg.attr("x", width / 2 + 40)
+    leg.attr("x", width / 2 + 35)
         .attr("width", 18).attr("height", 18)
         .style("fill", function(d) {
             return rcolor(d[yVarName]);
@@ -165,7 +165,7 @@ function BuildPie(id, chartData, options, level) {
         .style("opacity", function(d) {
             return d["op"];
         });
-    legend.append("text").attr("x", (width / 2) + 35 )
+    legend.append("text").attr("x", (width / 2) + 30 )
         .attr("y", 9).attr("dy", ".35em")
         .style("text-anchor", "end").text(function(d) {
             return d.caption;

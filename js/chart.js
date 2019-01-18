@@ -150,7 +150,7 @@ function renderStackedBarChart(inputData, chartFin, colorScheme) {
 	legendClassArray = legendClassArray.reverse();
 
 	legend.append("rect")
-	.attr("x", width -70)
+	.attr("x", width -60)
 	.attr("y", 90)
 	.attr("width", 18)
 	.attr("height", 18)
@@ -207,7 +207,7 @@ function renderStackedBarChart(inputData, chartFin, colorScheme) {
 	});
 
 	legend.append("text")
-	.attr("x", width - 75 )
+	.attr("x", width - 65 )
 	.attr("y", 98)
 	.attr("dy", ".35em")
 	.style("text-anchor", "end")
