@@ -59,11 +59,19 @@ svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(xAxis);
 
+	
+legend = svg.append("g")
+  .attr("class","legend")
+  .attr("transform","translate(50,30)")
+  .style("font-size","12px")
+  .call(d3.legend)
+  
 d3.selectAll("input").on("change", change);
 
 //var timeout = setTimeout(function() {
 //  d3.select("input[value=\"grouped\"]").property("checked", true).each(change);
 //}, 2000);
+
 
 function change() {
  //clearTimeout(timeout);
@@ -96,6 +104,7 @@ function transitionStacked() {
       .attr("x", function(d) { return x(d.x); })
       .attr("width", x.rangeBand());
 }
+
 
 // Inspired by Lee Byron's test data generator.
 function bumpLayer(n, o) {
