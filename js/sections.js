@@ -554,7 +554,7 @@ var scrollVis = function() {
 		$('#vis').append('<div id="chartFin" class="osef" style="  position: relative;top: 20%;"></div>')
 		var inputData = [];
 		for(var i =0; i<1; i++){
-        var date = "Consomation Numérique Global";
+        var date = "Consomation Numérique Total";
         inputData.push( {
             label : date,
 			'Autres': 1300.084,
