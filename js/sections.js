@@ -552,9 +552,23 @@ var scrollVis = function() {
             .duration(100)
             .attr("opacity", 0);
         removeFlow();
-		$('#vis').append('<div id="chartFin" class="osef" style="  position: relative;top: 20%;"><form><label><input type="radio" name="mode" value="grouped"> Grouped</label><label><input type="radio" name="mode" value="stacked" checked> Stacked</label></form></div>')
-		doBarChart();
-	    invertDivAndSvg();
+		$('#vis').append('<div id="chartFin" class="osef" style="  position: relative;top: 20%;"></div>')
+		var inputData = [];
+		for(var i =0; i<1; i++){
+        var date = "Consomation Numérique Global";
+        inputData.push( {
+            label : date,
+			'Autres': 1300.084,
+			'Streaming': 200,
+			'Spam': 114,
+			'Veille': 113.5,
+			'Obsolescence smartphones': 22,
+            'Mails supprimés': 10
+        });
+    }
+    var colorScheme = ["#606060","#960018","green","#336eff","#e68c40","#9400D3"];
+    renderStackedBarChart(inputData,"#chartFin",colorScheme);
+	invertDivAndSvg();
 	}
 
 	function invertDivAndSvg()
